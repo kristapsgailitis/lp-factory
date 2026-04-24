@@ -104,6 +104,9 @@ const btnSecondary =
 const btnOutline = btnSecondary; // alias kept for existing usages
 const btnGhost =
   "inline-flex items-center gap-2 rounded-[2px] text-white/80 px-3 py-1.5 text-[15px] hover:text-white transition font-head font-semibold";
+// Light-section CTA — 1px blue stroke, hover fills blue with white text
+const btnLight =
+  "inline-flex h-12 items-center justify-center gap-2 rounded-[2px] border border-[var(--sw-blue)] bg-transparent text-[var(--sw-blue)] px-8 text-[17px] hover:bg-[var(--sw-blue)] hover:text-white transition font-head font-semibold";
 
 function SectionLabel({ index, children }: { index?: string; children: React.ReactNode }) {
   return (
@@ -244,7 +247,7 @@ function HeroSpecCard() {
         <div className="mt-5 pt-4 border-t border-white/10 grid grid-cols-3 gap-2">
           {[
             ["14 wk", "to live"],
-            ["Q1", "peak-proven"],
+            ["Peak", "tested"],
             ["5+", "integrations"],
           ].map(([k, l]) => (
             <div
@@ -339,7 +342,7 @@ function Hero() {
 
               {/* Subhead — lead with ready-to-go platform, not a module list */}
               <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[54ch] leading-relaxed">
-                A <span className="font-semibold text-white">production-ready commerce platform</span> for school-photography operators. Already built. Already peak-tested. Configure it to your operation — you don’t rebuild it from scratch.
+                A <span className="font-semibold text-white">production-ready commerce platform</span> for school photography businesses. Already built. Already peak-tested. Configure it to your catalog, schools, and stack — you don’t rebuild it from scratch.
               </p>
               <p className="mt-4 text-[14px] md:text-[15px] text-white/80 max-w-[54ch] leading-relaxed">
                 <span className="font-bold text-white">14 weeks</span> kickoff
@@ -397,7 +400,7 @@ function AcceleratorAtAGlance() {
     ["Platform baseline", "Magento 2 + Hyvä + Pimcore"],
     ["Integration adapters", "REST · GraphQL · SOAP · webhooks · Kafka · SFTP · EDI"],
     ["Auth", "SAML · OIDC · SAML federation · IP allowlist"],
-    ["Peak readiness", "Tested through a live Q1 season"],
+    ["Peak readiness", "Battle-tested through a full peak season"],
     ["Data residency", "Region-pinned per deployment"],
     ["Handover", "Runbooks · architecture docs · admin training"],
   ];
@@ -418,9 +421,9 @@ function AcceleratorAtAGlance() {
             <span className="text-[var(--sw-blue)]">The platform is already built</span>
           </h2>
           <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[58ch]">
-            A complete operator stack — production code, proven architecture,
-            live through a national Q1 peak. You configure it against your
-            catalog, schools, and integration stack. You don’t spend 18 months
+            A complete commerce stack — production code, proven architecture,
+            battle-tested at peak. You configure it against your catalog,
+            schools, and integration stack. You don’t spend 18 months
             discovering what school photography actually needs.
           </p>
         </Reveal>
@@ -518,6 +521,19 @@ function AcceleratorAtAGlance() {
             </div>
           </Reveal>
         </div>
+
+        {/* mid-page CTA */}
+        <Reveal>
+          <div className="mt-16 md:mt-20 pt-10 border-t border-[var(--sw-black)]/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <p className="font-head text-[var(--sw-black)] text-[20px] md:text-[24px] leading-[1.25] max-w-[40ch]">
+              Stop building. Start configuring.
+            </p>
+            <a href="#cta" className={btnLight}>
+              Start the accelerator
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -544,7 +560,7 @@ function ProblemFires() {
     },
     {
       n: "03",
-      title: "Hard Q1 seasonal peak",
+      title: "Hard seasonal peak",
       body:
         "Photography season collides with yearbooks, ID cards, and parent orders. A manual stack breaks at peak. Support queue explodes.",
     },
@@ -570,9 +586,9 @@ function ProblemFires() {
               <span className="text-[var(--sw-mint)]">school photography commerce</span>
             </h2>
             <p className="mt-6 text-[16px] md:text-[17px] text-white/75 max-w-[56ch] leading-relaxed">
-              Hundreds of schools. Tens of thousands of students. A hard Q1
-              peak. A stack that has been patched for a decade. Any mid-market
-              operator will recognise all three.
+              Hundreds of schools. Tens of thousands of students. A hard
+              seasonal peak. A stack that has been patched for a decade. Any
+              mid-market business will recognise all three.
             </p>
           </Reveal>
         </div>
@@ -2497,6 +2513,20 @@ function Outcomes() {
       {items.map((it) => (
         <OutcomeBlockRow key={it.n} {...it} />
       ))}
+
+      {/* mid-page CTA · sits as the tail of Outcome 06 (bright theme) */}
+      <section className="relative bg-lp-bright overflow-hidden">
+        <div className="wrap py-16 md:py-20 border-t border-[var(--sw-black)]/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <p className="font-head text-[var(--sw-black)] text-[20px] md:text-[24px] leading-[1.25] max-w-[44ch]">
+            Six modules, all live in production. Configure them to your
+            business — start the diagnostic.
+          </p>
+          <a href="#cta" className={btnLight}>
+            Start the accelerator
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </div>
+      </section>
     </>
   );
 }
@@ -2584,7 +2614,7 @@ function AcceleratorValue() {
                   {[
                     "Vertical knowledge built in — SIC codes, siblings, portal workflows",
                     "Production data model designed for school photography from day one",
-                    "Batch engine tested through a live Q1 peak · zero incidents",
+                    "Batch engine tested through a live peak season · zero incidents",
                     "Portal adapted from live production code, not a whiteboard",
                     "Integration adapters proven across 5 legacy systems, extends to SAP, Navision, NetSuite, Odoo",
                   ].map((t, i) => (
@@ -2598,6 +2628,19 @@ function AcceleratorValue() {
             </div>
           </Reveal>
         </div>
+
+        {/* mid-page CTA */}
+        <Reveal>
+          <div className="mt-16 md:mt-20 pt-10 border-t border-[var(--sw-black)]/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <p className="font-head text-[var(--sw-black)] text-[20px] md:text-[24px] leading-[1.25] max-w-[40ch]">
+              14 weeks vs 18 months. The math is the pitch.
+            </p>
+            <a href="#cta" className={btnLight}>
+              Start the accelerator
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -2620,7 +2663,7 @@ function Testimonials() {
       short: "It looks great. Really slick.",
       long: "It looks great. It’s really slick. Can’t wait to get it in.",
       who: "Jon Mann",
-      role: "COO · reference operator",
+      role: "COO · reference client",
       accent: "mint",
     },
     {
@@ -2628,7 +2671,7 @@ function Testimonials() {
       short: "Money coming in. No phone calls. Smooth sailing.",
       long: "Money coming in. No phone calls from anybody. No upset customers. Smooth sailing.",
       who: "David van Gelder",
-      role: "Operations · reference operator",
+      role: "Operations · reference client",
       accent: "blue",
     },
   ];
@@ -2721,7 +2764,7 @@ function ReferenceCase() {
               <span className="text-white">Australia</span>
             </h2>
             <p className="text-white/80 text-[16px] md:text-[17px] leading-relaxed max-w-[60ch]">
-              National school photography operator. Hundreds of schools. Tens of thousands of students. Hard Q1 peak. Strict student data residency. Five legacy systems that nobody had touched in five years.
+              National school photography company. Hundreds of schools. Tens of thousands of students. Hard Q1 peak. Strict student data residency. Five legacy systems that nobody had touched in five years.
             </p>
           </div>
         </Reveal>
@@ -3008,6 +3051,19 @@ function WhatShips() {
             </ol>
           </Reveal>
         </div>
+
+        {/* mid-page CTA */}
+        <Reveal>
+          <div className="mt-16 md:mt-20 pt-10 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <p className="font-head text-white text-[20px] md:text-[24px] leading-[1.25] max-w-[42ch]">
+              Code, docs, training, post-launch on-call. The whole package.
+            </p>
+            <a href="#cta" className={btnPrimary}>
+              Start the accelerator
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -3046,7 +3102,7 @@ function FAQ() {
     },
     {
       q: "What does a fourteen-week launch actually cover?",
-      a: "Student data model redesigned from the ground up. Dual SSO wired. Batch engine with 10 export formats. ID card workflow live. Five legacy systems integrated via middleware API. Admin on VPN, portal IP-restricted. Full audit logging. 500GB images migrated off an on-prem server. Live before Q1 peak.",
+      a: "Student data model redesigned from the ground up. Dual SSO wired. Batch engine with 10 export formats. ID card workflow live. Five legacy systems integrated via middleware API. Admin on VPN, portal IP-restricted. Full audit logging. 500GB images migrated off an on-prem server. Live before peak season.",
     },
     {
       q: "Our legacy systems are fragile. Can we modernize without touching them?",
@@ -3120,10 +3176,10 @@ function CTA() {
 
             {/* Account-exec quote card */}
             <div className="mt-10 rounded-[4px] border border-white/15 bg-white/[0.04] backdrop-blur p-6 md:p-7">
-              <blockquote className="font-head text-white text-[17px] md:text-[19px] leading-[1.35]">
-                &ldquo;Most operators wait 18 months for a platform rebuild. We built ours once, in production, under a national Q1 deadline. You get a{" "}
-                <span className="text-[var(--sw-mint)]">14-week configuration</span>{" "}
-                of a stack that already survived peak. That is the whole value — the learning curve is already paid for.&rdquo;
+              <blockquote className="font-head text-white text-[20px] md:text-[24px] leading-[1.25] tracking-[-0.005em]">
+                &ldquo;You don’t pay us to learn school photography.{" "}
+                <span className="text-[var(--sw-mint)]">We already did.</span>{" "}
+                Configure the proven stack in 14 weeks, not 18 months.&rdquo;
               </blockquote>
               <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-4">
                 <img

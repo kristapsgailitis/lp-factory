@@ -191,10 +191,18 @@ function HeroBg() {
 }
 
 /* Glass quote card · real client voice · picks up ambient light */
-function HeroCaseCard() {
+function HeroSpecCard() {
+  const modules = [
+    "Self-service school portal",
+    "Unified student data model",
+    "Automated batch exports",
+    "ID card & admin services",
+    "Dual SSO + audit",
+    "Legacy integration layer",
+  ];
   return (
     <a
-      href="#reference"
+      href="#at-a-glance"
       className="group relative block overflow-hidden rounded-[4px] backdrop-blur"
       style={{
         background:
@@ -205,43 +213,56 @@ function HeroCaseCard() {
     >
       <div className="p-6 md:p-7">
         <div className="flex items-center justify-between label-code text-white/70 mb-6">
-          <span>Go-live day · Q1 2025</span>
+          <span>Accelerator · v1 · production</span>
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--sw-mint)] pulse-green" />
         </div>
 
-        <blockquote className="font-head text-white text-[20px] md:text-[22px] leading-[1.25] mb-5">
-          “Money coming in. No phone calls. No upset customers. Smooth sailing.”
-        </blockquote>
-
-        <div className="pt-4 border-t border-white/10 flex items-start justify-between gap-4">
-          <div>
-            <div className="text-white text-[13px] md:text-[14px] font-medium">
-              David van Gelder
-            </div>
-            <div className="label-code text-white/55 mt-1">
-              Operations · Advanced Life
-            </div>
+        {/* Lead · module count */}
+        <div className="flex items-baseline gap-3 mb-5">
+          <div className="font-head text-white text-[44px] md:text-[52px] leading-none tabular-nums">
+            6
           </div>
-          <ArrowUpRight className="h-5 w-5 shrink-0 text-white/70 mt-0.5 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition" />
+          <div className="label-code text-white/65">production modules</div>
         </div>
 
-        {/* metric tiles — launch numbers */}
-        <div className="mt-5 grid grid-cols-3 gap-2">
+        {/* Module list */}
+        <ul className="pt-4 border-t border-white/10 space-y-2.5">
+          {modules.map((m, i) => (
+            <li
+              key={m}
+              className="flex items-center gap-3 text-[13px] md:text-[14px] text-white/85"
+            >
+              <span className="label-code text-white/40 tabular-nums w-[18px] shrink-0">
+                0{i + 1}
+              </span>
+              <span>{m}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Bottom spec strip — product, not case */}
+        <div className="mt-5 pt-4 border-t border-white/10 grid grid-cols-3 gap-2">
           {[
             ["14 wk", "to live"],
-            ["44,891", "students"],
-            ["0", "incidents"],
+            ["Q1", "peak-proven"],
+            ["5+", "integrations"],
           ].map(([k, l]) => (
             <div
               key={k}
               className="rounded-[2px] border border-white/10 bg-white/[0.03] px-3 py-3"
             >
-              <div className="font-head text-white text-[18px] md:text-[20px] leading-none tabular-nums">
+              <div className="font-head text-white text-[17px] md:text-[19px] leading-none tabular-nums">
                 {k}
               </div>
               <div className="label-code mt-2 text-[9px] text-white/55">{l}</div>
             </div>
           ))}
+        </div>
+
+        {/* Explore */}
+        <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
+          <span className="label-code text-white/65">What ships</span>
+          <ArrowUpRight className="h-5 w-5 shrink-0 text-white/70 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition" />
         </div>
       </div>
     </a>
@@ -315,17 +336,16 @@ function Hero() {
                 <span style={{ color: "var(--sw-mint)" }}>commerce</span>
               </h1>
 
-              {/* Subhead — integrated capability line + client reveal */}
+              {/* Subhead — product-first */}
               <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[54ch] leading-relaxed">
-                Built for how school photography actually operates. Student
-                data, self-service school portal, automated batch exports, ID
-                card workflow, dual SSO, legacy integrations.
+                Six production modules for school-photography operators.
+                Self-service school portal, unified student data, batch
+                exports, ID cards, dual SSO, and legacy integration.
               </p>
               <p className="mt-4 text-[14px] md:text-[15px] text-white/80 max-w-[54ch] leading-relaxed">
-                <span className="font-bold text-white">Live in 14 weeks</span>{" "}
-                with{" "}
-                <span className="font-bold text-white">Advanced Life</span>,
-                Australia&apos;s national school photography operator.
+                <span className="font-bold text-white">14 weeks</span>{" "}
+                from kickoff to live. Peak-season proven. Configurable to your
+                catalog, schools, and integration stack.
               </p>
 
               {/* Scroll indicator — matches Figma node 31611:43342: 14x20 pill + Inter 14px lowercase */}
@@ -341,9 +361,9 @@ function Hero() {
               </div>
             </div>
 
-            {/* RIGHT · glass case card */}
+            {/* RIGHT · product spec card */}
             <div className="lg:pt-24">
-              <HeroCaseCard />
+              <HeroSpecCard />
             </div>
           </div>
         </div>
@@ -357,35 +377,175 @@ function Hero() {
 
 
 /* ==================================================================
-   SECTION · Four fires + client pullquote
-   Dark · 4 problem cards + 1 big quote from David van Gelder
+   SECTION · Accelerator at a glance
+   Bright · product spec + architecture stack
+   ================================================================== */
+
+function AcceleratorAtAGlance() {
+  const modules = [
+    { n: "01", name: "Self-service school portal", stack: "Magento 2 · Hyvä" },
+    { n: "02", name: "Unified student data model", stack: "Pimcore MDM" },
+    { n: "03", name: "Automated batch exports", stack: "CRON · 10 formats" },
+    { n: "04", name: "ID card & admin services", stack: "in-platform builder" },
+    { n: "05", name: "Dual SSO + audit", stack: "Cognito · Entra · Google" },
+    { n: "06", name: "Legacy integration layer", stack: ".NET middleware" },
+  ];
+
+  const spec: [string, string][] = [
+    ["Deployment", "14 weeks · kickoff to live"],
+    ["Team shape", "5–8 person pod · senior-led"],
+    ["Platform baseline", "Magento 2 + Hyvä + Pimcore"],
+    ["Integration adapters", "REST · GraphQL · SOAP · webhooks · Kafka · SFTP · EDI"],
+    ["Auth", "SAML · OIDC · SAML federation · IP allowlist"],
+    ["Peak readiness", "Tested through a live Q1 season"],
+    ["Data residency", "Region-pinned per deployment"],
+    ["Handover", "Runbooks · architecture docs · admin training"],
+  ];
+
+  return (
+    <section
+      id="at-a-glance"
+      className="relative bg-lp-bright py-28 md:py-36 overflow-hidden text-[var(--sw-black)] scroll-mt-20"
+    >
+      <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/10" />
+      <div className="wrap relative">
+        <Reveal>
+          <div className="label-code mb-6 text-[var(--sw-black)]/55">
+            The accelerator at a glance
+          </div>
+          <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[60px] leading-[1.04] max-w-[26ch]">
+            A productized stack, not a{" "}
+            <span className="text-[var(--sw-blue)]">from-scratch build</span>
+          </h2>
+          <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[58ch]">
+            Six production modules that cover the end-to-end workflow — from
+            the school portal to parent commerce to legacy integration.
+            Configurable to your catalog, schools, and stack.
+          </p>
+        </Reveal>
+
+        <div className="mt-14 md:mt-20 grid gap-10 lg:gap-14 lg:grid-cols-[1.1fr_1fr] items-start">
+          {/* Left — modules architecture stack */}
+          <Reveal>
+            <div className="relative bracket-frame p-5 md:p-7">
+              <span className="bracket-bl" />
+              <span className="bracket-br" />
+              <div className="label-code mb-6 text-[var(--sw-black)]/55">
+                FIG.01 · Module architecture
+              </div>
+
+              <ul className="space-y-0">
+                {modules.map((m, i) => (
+                  <li key={m.n} className="group relative">
+                    <div className="grid grid-cols-[40px_1fr_auto] items-center gap-4 py-4 md:py-5 border-b border-[var(--sw-black)]/10 last:border-b-0">
+                      {/* module number */}
+                      <div className="label-code text-[var(--sw-blue)] tabular-nums">
+                        {m.n}
+                      </div>
+                      {/* name */}
+                      <div className="font-head text-[var(--sw-black)] text-[16px] md:text-[18px] leading-tight">
+                        {m.name}
+                      </div>
+                      {/* stack chip */}
+                      <div className="label-code text-[var(--sw-black)]/55 text-right">
+                        {m.stack}
+                      </div>
+                    </div>
+                    {/* connector tick · visual "stack" effect */}
+                    {i < modules.length - 1 && (
+                      <div className="absolute left-[19px] top-full w-px h-0 bg-[var(--sw-blue)]/30" />
+                    )}
+                  </li>
+                ))}
+              </ul>
+
+              {/* baseline — animated rule */}
+              <svg viewBox="0 0 100 1" className="w-full h-px mt-4" preserveAspectRatio="none">
+                <DrawnPath
+                  d="M0 0.5 H100"
+                  stroke="#3F4AAF"
+                  strokeOpacity={0.6}
+                  strokeWidth={1}
+                  duration={1.2}
+                  delay={0.4}
+                />
+              </svg>
+            </div>
+          </Reveal>
+
+          {/* Right — spec sheet */}
+          <Reveal delay={0.1}>
+            <div
+              className="relative rounded-[4px] p-6 md:p-8 text-white overflow-hidden"
+              style={{
+                background:
+                  "linear-gradient(180deg, #171a38 0%, #10132c 100%)",
+                border: "1px solid rgba(230,231,239,0.08)",
+              }}
+            >
+              {/* top accent · product-stripe */}
+              <span
+                className="absolute top-0 left-0 h-[3px] w-20"
+                style={{ background: "var(--sw-mint)" }}
+              />
+
+              <div className="flex items-center justify-between mb-7">
+                <span className="label-code text-white/55">Spec sheet</span>
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--sw-mint)] pulse-green" />
+                  <span className="label-code text-white/55">Live</span>
+                </div>
+              </div>
+
+              <dl className="space-y-0">
+                {spec.map(([k, v], i) => (
+                  <motion.div
+                    key={k}
+                    initial={{ opacity: 0, x: 6 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + i * 0.05, duration: 0.35 }}
+                    viewport={{ once: true, amount: 0.25 }}
+                    className="grid grid-cols-[150px_1fr] gap-4 py-3 border-b border-white/10 last:border-b-0"
+                  >
+                    <dt className="label-code text-white/55">{k}</dt>
+                    <dd className="text-[13px] md:text-[14px] text-white/90 leading-snug">
+                      {v}
+                    </dd>
+                  </motion.div>
+                ))}
+              </dl>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ==================================================================
+   SECTION · Three fires in school photography commerce
+   Dark · industry-framed problem cards
    ================================================================== */
 
 function ProblemFires() {
   const fires = [
     {
       n: "01",
-      title: "Legacy stack nobody wants to touch",
+      title: "A legacy stack nobody wants to touch",
       body:
-        "Five systems, no unified data model. GlobalJade, ImageDatabase, The Hub, CRM, eWay. Downtime risk compounds every year.",
+        "Five or more systems, no unified data model. An ageing platform, an image DB, a CRM, a fulfilment tool. Downtime risk compounds every year.",
     },
     {
       n: "02",
       title: "Student data scattered",
       body:
-        "Names as single text strings. SIC codes tied to images, not students. Legacy database untouched for five years.",
+        "Names as single text strings. SIC codes tied to images, not students. Sibling relationships and school transfers nowhere in the schema.",
     },
     {
       n: "03",
       title: "Hard Q1 seasonal peak",
       body:
-        "Photography season collides with yearbooks, ID cards, and parent orders. A manual stack breaks at peak.",
-    },
-    {
-      n: "04",
-      title: "Operations in friction",
-      body:
-        "Ops team runs manual exports, unblocks exception-pool orders, keys the same data twice into legacy and ERP.",
+        "Photography season collides with yearbooks, ID cards, and parent orders. A manual stack breaks at peak. Support queue explodes.",
     },
   ];
 
@@ -403,19 +563,21 @@ function ProblemFires() {
       <div className="wrap relative">
         <div className="max-w-[64ch] mb-14 md:mb-20">
           <Reveal>
-            <div className="label-code mb-6 text-white/55">The four fires</div>
+            <div className="label-code mb-6 text-white/55">The fires this solves</div>
             <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05]">
-              What we walked into at{" "}
-              <span className="text-[var(--sw-mint)]">Advanced&nbsp;Life</span>
+              Three fires common to{" "}
+              <span className="text-[var(--sw-mint)]">school photography commerce</span>
             </h2>
             <p className="mt-6 text-[16px] md:text-[17px] text-white/75 max-w-[56ch] leading-relaxed">
-              Australia&apos;s national school photography operator. Hundreds of schools. Tens of thousands of students. One hard Q1 deadline. These are the fires any mid-market operator recognises.
+              Hundreds of schools. Tens of thousands of students. A hard Q1
+              peak. A stack that has been patched for a decade. Any mid-market
+              operator will recognise all three.
             </p>
           </Reveal>
         </div>
 
-        {/* 4 fire cards */}
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4 mb-16 md:mb-24">
+        {/* 3 fire cards */}
+        <div className="grid gap-5 md:grid-cols-3 mb-16 md:mb-24">
           {fires.map((f, i) => (
             <Reveal key={f.n} delay={i * 0.08}>
               <div className="relative rounded-[4px] border border-white/10 bg-white/[0.02] p-6 md:p-7 h-full">
@@ -433,21 +595,14 @@ function ProblemFires() {
           ))}
         </div>
 
-        {/* client pullquote — David van Gelder, Ops */}
+        {/* Category pullquote — industry framing (client-specific proof lives in ReferenceCase) */}
         <Reveal>
           <figure className="max-w-[72ch] mx-auto text-center">
-            <svg aria-hidden className="mx-auto mb-6 h-8 opacity-60" viewBox="0 0 48 32" fill="none">
-              <path
-                d="M4 24 Q 4 4, 20 4 L 20 12 Q 14 12, 12 20 L 20 20 L 20 30 L 4 30 Z M28 24 Q 28 4, 44 4 L 44 12 Q 38 12, 36 20 L 44 20 L 44 30 L 28 30 Z"
-                fill="var(--sw-mint)"
-              />
-            </svg>
-            <blockquote className="font-head text-white text-[24px] md:text-[36px] lg:text-[44px] leading-[1.2] tracking-[-0.01em]">
-              We had <span className="text-[var(--sw-mint)]">40 people doing what should take 25</span>. Burning cash from all of these client service officers.
+            <blockquote className="font-head text-white text-[24px] md:text-[36px] lg:text-[42px] leading-[1.2] tracking-[-0.01em]">
+              The pattern is the same everywhere:{" "}
+              <span className="text-[var(--sw-mint)]">40 people doing what should take 25</span>.{" "}
+              The accelerator collapses that.
             </blockquote>
-            <figcaption className="mt-7 label-code text-white/60">
-              David van Gelder · Operations · Advanced Life
-            </figcaption>
           </figure>
         </Reveal>
       </div>
@@ -2075,9 +2230,9 @@ function Outcomes() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="text-white/75 text-[16px] md:text-[18px] leading-relaxed max-w-[46ch]">
-                Each outcome is live today on the reference operator in
-                Australia. No prototypes, no roadmap. Configure against your
-                schools, your tooling, your market.
+                Each module is live in production. No prototypes, no roadmap,
+                no whiteboard architecture. Configure against your catalog,
+                your schools, your stack.
               </p>
               <div className="mt-8 grid grid-cols-3 gap-5 max-w-[420px]">
                 <div>
@@ -2140,15 +2295,15 @@ function AcceleratorValue() {
       <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/15" />
       <div className="wrap relative">
         <Reveal>
-          <div className="label-code mb-6 text-[var(--sw-black)]/55">Why accelerator · not bespoke</div>
+          <div className="label-code mb-6 text-[var(--sw-black)]/55">Accelerator vs building from scratch</div>
           <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[52px] lg:text-[64px] leading-[1.05] max-w-[18ch]">
             You don’t pay us to learn{" "}
             <span className="text-[var(--sw-blue)]">school photography</span>
           </h2>
           <p className="mt-6 text-[var(--sw-black)]/75 max-w-[58ch] text-[16px] md:text-[17px] leading-relaxed">
-            We already learned it, under a real Q1 deadline, against a legacy
-            database nobody had touched in five years. The result is a proven
-            build we adapt to you.
+            The vertical knowledge is already built in — SIC codes, sibling
+            relationships, portal workflows, peak-season behaviour. You get the
+            proven build, configured to your operation.
           </p>
         </Reveal>
 
@@ -2244,7 +2399,7 @@ function Testimonials() {
       short: "It looks great. Really slick.",
       long: "It looks great. It’s really slick. Can’t wait to get it in.",
       who: "Jon Mann",
-      role: "COO · Advanced Life",
+      role: "COO · reference operator",
       accent: "mint",
     },
     {
@@ -2252,16 +2407,8 @@ function Testimonials() {
       short: "Money coming in. No phone calls. Smooth sailing.",
       long: "Money coming in. No phone calls from anybody. No upset customers. Smooth sailing.",
       who: "David van Gelder",
-      role: "Operations · Advanced Life",
+      role: "Operations · reference operator",
       accent: "blue",
-    },
-    {
-      tag: "T-6 DAYS · LEADERSHIP MINDSET",
-      short: "If you wait for perfection, you never implement.",
-      long: "You’ll never do one of these where something doesn’t fall flat on its face. What you do about it when it happens. If you wait for perfection, you never implement.",
-      who: "Jon Mann",
-      role: "COO · Advanced Life",
-      accent: "mint",
     },
   ];
   return (
@@ -2274,18 +2421,19 @@ function Testimonials() {
       <div className="wrap">
         <div className="max-w-[60ch] mb-14 md:mb-20">
           <Reveal>
-            <div className="label-code mb-6 text-white/55">Voices from the engagement</div>
+            <div className="label-code mb-6 text-white/55">Quoted from the reference launch</div>
             <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[60px] leading-[1.05] max-w-[22ch]">
               The client,{" "}
-              <span className="text-white/45">in their own words.</span>
+              <span className="text-white/45">in their own words</span>
             </h2>
             <p className="mt-6 text-white/75 text-[16px] md:text-[17px] leading-relaxed">
-              Quoted from 70 weekly syncs, go-live day, and monthly feedback loops across the Advanced Life engagement. COO, operations lead, delivery team.
+              Two voices from the reference launch — demo review and go-live
+              day. Pulled from weekly syncs over the engagement.
             </p>
           </Reveal>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid md:grid-cols-2 gap-5 md:gap-6 max-w-[900px]">
           {quotes.map((q, i) => (
             <Reveal key={i} delay={i * 0.12}>
               <figure className="relative rounded-[4px] border border-white/10 bg-white/[0.03] backdrop-blur-sm p-7 md:p-8 h-full flex flex-col gap-6 transition-all hover:-translate-y-1 hover:border-white/20">
@@ -2531,6 +2679,126 @@ function HowWeWork() {
 }
 
 /* ==================================================================
+   SECTION · WhatShips · concrete deliverables at end of engagement
+   Dark · manifest layout · editorial
+   ================================================================== */
+
+function WhatShips() {
+  const deliverables = [
+    {
+      n: "01",
+      name: "Production deployment",
+      detail: "Six modules live on your stack. Region-pinned. IP-allowlisted where relevant.",
+      tag: "code",
+    },
+    {
+      n: "02",
+      name: "Migration plan",
+      detail: "Scripted cutover from your legacy systems. Dry-run tested. Zero-downtime fallback.",
+      tag: "doc",
+    },
+    {
+      n: "03",
+      name: "Architecture documentation",
+      detail: "System diagram, data model, integration adapters, auth flows. Versioned with the code.",
+      tag: "doc",
+    },
+    {
+      n: "04",
+      name: "Runbooks",
+      detail: "Peak-season ops, recovery procedures, known-issue registry. Written for your on-call team.",
+      tag: "doc",
+    },
+    {
+      n: "05",
+      name: "Admin training",
+      detail: "Three-session handover covering portal, exports, ID cards, SSO, and audit access.",
+      tag: "session",
+    },
+    {
+      n: "06",
+      name: "30-day post-launch",
+      detail: "Joint on-call with your team through the first peak window. Fix-forward, not hand-off-and-disappear.",
+      tag: "support",
+    },
+  ];
+
+  return (
+    <section id="what-ships" className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden">
+      {/* ambient side glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(900px 600px at 90% 20%, rgba(63,74,175,0.18) 0%, transparent 55%)",
+        }}
+      />
+
+      {/* top hairline */}
+      <svg className="absolute inset-x-0 top-0 h-px w-full opacity-40" viewBox="0 0 1000 1" preserveAspectRatio="none">
+        <DrawnPath d="M0 0.5 H1000" stroke="rgba(110,247,110,0.45)" strokeWidth={1} duration={2} />
+      </svg>
+
+      <div className="wrap relative">
+        <div className="grid gap-10 md:gap-14 lg:grid-cols-[1fr_1.4fr] items-start">
+          <Reveal>
+            <div className="label-code mb-6 text-white/55">What ships</div>
+            <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[60px] leading-[1.04] max-w-[16ch]">
+              Six modules,{" "}
+              <span className="text-[var(--sw-mint)]">plus everything around them</span>
+            </h2>
+            <p className="mt-6 text-white/75 text-[16px] md:text-[17px] leading-relaxed max-w-[44ch]">
+              The engagement ships production code — and the artifacts your
+              team needs to run it. No black box, no vendor lock-in, no
+              post-launch silence.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <ol className="space-y-0 border-t border-white/10">
+              {deliverables.map((d) => (
+                <motion.li
+                  key={d.n}
+                  initial={{ opacity: 0, y: 6 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  className="group relative grid grid-cols-[40px_1fr_auto] items-start gap-4 md:gap-6 py-5 md:py-6 border-b border-white/10 transition-colors hover:bg-white/[0.02]"
+                >
+                  {/* tick number */}
+                  <div className="label-code text-[var(--sw-mint)] tabular-nums pt-0.5">
+                    {d.n}
+                  </div>
+
+                  {/* name + detail */}
+                  <div>
+                    <h3 className="font-head text-white text-[18px] md:text-[22px] leading-tight mb-1.5">
+                      {d.name}
+                    </h3>
+                    <p className="text-[13px] md:text-[14px] text-white/70 leading-relaxed max-w-[54ch]">
+                      {d.detail}
+                    </p>
+                  </div>
+
+                  {/* type chip */}
+                  <div className="hidden md:block">
+                    <span
+                      className="label-code px-2.5 py-1 rounded-[2px] border border-white/15 text-white/60"
+                    >
+                      {d.tag.toUpperCase()}
+                    </span>
+                  </div>
+                </motion.li>
+              ))}
+            </ol>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ==================================================================
    SECTION · FAQ · Dark with scroll-reveal accordion
    ================================================================== */
 
@@ -2639,7 +2907,7 @@ function CTA() {
             <div className="mt-10 rounded-[4px] border border-white/15 bg-white/[0.04] backdrop-blur p-6 md:p-7">
               <blockquote className="font-head text-white text-[17px] md:text-[19px] leading-[1.3]">
                 &ldquo;You pay us to{" "}
-                <span className="text-[var(--sw-mint)]">configure, not rebuild</span>. Advanced Life funded the first version. You get the proven one.&rdquo;
+                <span className="text-[var(--sw-mint)]">configure, not rebuild</span>. The reference implementation funded the first version. You get the proven one.&rdquo;
               </blockquote>
               <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-4">
                 <div className="relative h-10 w-10 rounded-full overflow-hidden bg-gradient-to-br from-[var(--sw-mint)]/40 to-[var(--sw-blue)]/60 flex items-center justify-center">
@@ -2751,6 +3019,7 @@ export default function Page() {
   return (
     <>
       <Hero />
+      <AcceleratorAtAGlance />
       <ProblemFires />
       <Differentiator />
       <Outcomes />
@@ -2758,6 +3027,7 @@ export default function Page() {
       <AcceleratorValue />
       <Testimonials />
       <HowWeWork />
+      <WhatShips />
       <FAQ />
       <CTA />
       <Footer />

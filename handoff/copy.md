@@ -20,10 +20,10 @@ Live URL: https://lp-v2-zeta.vercel.app
 **H1**: School photography **[commerce]**
 
 **Subhead**:
-> Six production modules for school-photography operators. Self-service school portal, unified student data, batch exports, ID cards, dual SSO, and legacy integration.
+> A **production-ready commerce platform** for school photography businesses. Already built. Already peak-tested. Configure it to your catalog, schools, and stack — you don't rebuild it from scratch.
 
 **Secondary line**:
-> **14 weeks** from kickoff to live. Peak-season proven. Configurable to your catalog, schools, and integration stack.
+> **14 weeks** kickoff to live — not 14 months. Covers student data, parent commerce, school portal, batch exports, ID cards, dual SSO, and legacy integration.
 
 **Scroll indicator**: `scroll to discover` (lowercase, 14 px)
 
@@ -40,7 +40,7 @@ Live URL: https://lp-v2-zeta.vercel.app
   6. Legacy integration layer
 - **Stat tile strip** (3 tiles):
   - `14 wk` · `to live`
-  - `Q1` · `peak-proven`
+  - `Peak` · `tested`
   - `5+` · `integrations`
 - **Footer link**: `What ships` + up-right arrow → scrolls to `#at-a-glance`
 
@@ -67,10 +67,10 @@ Logo files in `assets/logos/`. Apply CSS filter `brightness(0) invert(1)` so the
 
 **Eyebrow**: `THE ACCELERATOR AT A GLANCE`
 
-**H2**: A productized stack, not a **[from-scratch build]**
+**H2**: Come to us. **[The platform is already built]**
 
 **Lede**:
-> Six production modules that cover the end-to-end workflow — from the school portal to parent commerce to legacy integration. Configurable to your catalog, schools, and stack.
+> A complete commerce stack — production code, proven architecture, battle-tested at peak. You configure it against your catalog, schools, and integration stack. You don't spend 18 months discovering what school photography actually needs.
 
 ### Left panel — Module architecture stack
 
@@ -96,7 +96,7 @@ Logo files in `assets/logos/`. Apply CSS filter `brightness(0) invert(1)` so the
 | Platform baseline | Magento 2 + Hyvä + Pimcore |
 | Integration adapters | REST · GraphQL · SOAP · webhooks · Kafka · SFTP · EDI |
 | Auth | SAML · OIDC · SAML federation · IP allowlist |
-| Peak readiness | Tested through a live Q1 season |
+| Peak readiness | Battle-tested through a full peak season |
 | Data residency | Region-pinned per deployment |
 | Handover | Runbooks · architecture docs · admin training |
 
@@ -109,7 +109,7 @@ Logo files in `assets/logos/`. Apply CSS filter `brightness(0) invert(1)` so the
 **H2**: Three fires common to **[school photography commerce]**
 
 **Lede**:
-> Hundreds of schools. Tens of thousands of students. A hard Q1 peak. A stack that has been patched for a decade. Any mid-market operator will recognise all three.
+> Hundreds of schools. Tens of thousands of students. A hard seasonal peak. A stack that has been patched for a decade. Any mid-market business will recognise all three.
 
 ### Fire cards (3 in a row)
 
@@ -122,7 +122,7 @@ Logo files in `assets/logos/`. Apply CSS filter `brightness(0) invert(1)` so the
 - Body: Names as single text strings. SIC codes tied to images, not students. Sibling relationships and school transfers nowhere in the schema.
 
 **Fire · 03**
-- Title: Hard Q1 seasonal peak
+- Title: Hard seasonal peak
 - Body: Photography season collides with yearbooks, ID cards, and parent orders. A manual stack breaks at peak. Support queue explodes.
 
 ### Pullquote (below fire cards)
@@ -265,7 +265,9 @@ Each outcome row has the same structure: kicker label, H3, lede, 3-item results 
 - Australia (white)
 
 **Lede** (right column):
-> National school photography operator. Hundreds of schools. Tens of thousands of students. Hard Q1 peak. Strict student data residency. Five legacy systems that nobody had touched in five years.
+> National school photography company. Hundreds of schools. Tens of thousands of students. Hard Q1 peak. Strict student data residency. Five legacy systems that nobody had touched in five years.
+
+(Note: "Q1" is intentional and only used in this section. Do not use Q1 anywhere else on the page.)
 
 ### Fire cards — what we walked into (3 in a row)
 
@@ -323,7 +325,7 @@ Each outcome row has the same structure: kicker label, H3, lede, 3-item results 
 - Bullets (with mint green checkmarks):
   - Vertical knowledge built in — SIC codes, siblings, portal workflows
   - Production data model designed for school photography from day one
-  - Batch engine tested through a live Q1 peak · zero incidents
+  - Batch engine tested through a live peak season · zero incidents
   - Portal adapted from live production code, not a whiteboard
   - Integration adapters proven across 5 legacy systems, extends to SAP, Navision, NetSuite, Odoo
 
@@ -343,12 +345,12 @@ Each outcome row has the same structure: kicker label, H3, lede, 3-item results 
 **Card 1 (mint accent)**
 - Tag: `PRE-LAUNCH · DEMO REVIEW`
 - Quote: "It looks great. Really slick."
-- Attribution: Jon Mann · COO · reference operator
+- Attribution: Jon Mann · COO · reference client
 
 **Card 2 (blue accent)**
 - Tag: `GO-LIVE · OPERATIONS DEF OF DONE`
 - Quote: "Money coming in. No phone calls. Smooth sailing."
-- Attribution: David van Gelder · Operations · reference operator
+- Attribution: David van Gelder · Operations · reference client
 
 ---
 
@@ -377,25 +379,28 @@ Each outcome row has the same structure: kicker label, H3, lede, 3-item results 
 
 ---
 
-## 13. WhatShips · What ships (dark)
+## 13. WhatShips · Around the code (dark)
 
-**Eyebrow**: `WHAT SHIPS`
+**Eyebrow**: `AROUND THE CODE`
 
-**H2**: Six modules, **[plus everything around them]**
+**H2**: Not just the platform. **[Everything to run it]**
 
 **Lede**:
-> The engagement ships production code — and the artifacts your team needs to run it. No black box, no vendor lock-in, no post-launch silence.
+> The engagement hands over the artifacts your team needs to own the stack after launch. No black box, no vendor lock-in, no post-launch silence.
 
-### 6 deliverables (manifest list · dark)
+### 5 deliverables (manifest list · dark)
 
 | # | Name | Detail | Type chip |
 |---|---|---|---|
-| 01 | Production deployment | Six modules live on your stack. Region-pinned. IP-allowlisted where relevant. | CODE |
-| 02 | Migration plan | Scripted cutover from your legacy systems. Dry-run tested. Zero-downtime fallback. | DOC |
-| 03 | Architecture documentation | System diagram, data model, integration adapters, auth flows. Versioned with the code. | DOC |
-| 04 | Runbooks | Peak-season ops, recovery procedures, known-issue registry. Written for your on-call team. | DOC |
-| 05 | Admin training | Three-session handover covering portal, exports, ID cards, SSO, and audit access. | SESSION |
-| 06 | 30-day post-launch | Joint on-call with your team through the first peak window. Fix-forward, not hand-off-and-disappear. | SUPPORT |
+| 01 | Migration plan | Scripted cutover from your legacy systems. Dry-run tested. Zero-downtime fallback. | DOC |
+| 02 | Architecture documentation | System diagram, data model, integration adapters, auth flows. Versioned with the code. | DOC |
+| 03 | Runbooks | Peak-season ops, recovery procedures, known-issue registry. Written for your on-call team. | DOC |
+| 04 | Admin training | Three-session handover covering portal, exports, ID cards, SSO, and audit access. | SESSION |
+| 05 | 30-day post-launch | Joint on-call with your team through the first peak window. Fix-forward, not hand-off-and-disappear. | SUPPORT |
+
+**Section tail · CTA row**: small heading on left + button on right.
+- Heading: "Code, docs, training, post-launch on-call. The whole package."
+- Button (dark style): `Start the accelerator` → `#cta`
 
 ---
 
@@ -444,10 +449,11 @@ Yes. We walk through the modules in a sandbox during the consultation. Book belo
 
 ### Quote card (inside left column)
 
-> "You pay us to **[configure, not rebuild]**. The reference implementation funded the first version. You get the proven one."
+> "You don't pay us to learn school photography. **[We already did.]** Configure the proven stack in 14 weeks, not 18 months."
 
 **Attribution**: Kristaps Gailitis · CMO · scandiweb
-**Avatar**: gradient circle with initials "KG"
+**Avatar**: real headshot at `assets/team/kristaps.png` (44×44 px circle, 1 px border at `rgba(230, 231, 239, 0.2)`)
+**Quote size**: 20 px mobile, 24 px desktop · Golos Text · line-height 1.25
 
 ### Commitment bullets (inside left column, mint green checkmarks)
 
@@ -476,6 +482,28 @@ Yes. We walk through the modules in a sandbox during the consultation. Book belo
 - **Left**: scandiweb wordmark (white, lowercase)
 - **Center**: Terms · Privacy · Cookies · © 2026 scandiweb. All rights reserved.
 - **Right**: (pulsing green dot) `STATUS · ALL SYSTEMS NORMAL`
+
+---
+
+## Mid-page CTAs (4 inline rows)
+
+Scattered through the page to give visitors a decision point at the end of each pitch arc. Each is a small horizontal row with: a short headline on the left + an outline button on the right linking to `#cta`.
+
+| Where it lives | Theme | Headline | Button |
+|---|---|---|---|
+| End of `AcceleratorAtAGlance` | bright (light bg) → blue outline button | Stop building. Start configuring. | Start the accelerator → `#cta` |
+| Right after the 6 outcome rows (own bright section) | bright | Six modules, all live in production. Configure them to your business — start the diagnostic. | Start the accelerator → `#cta` |
+| End of `AcceleratorValue` | bright | 14 weeks vs 18 months. The math is the pitch. | Start the accelerator → `#cta` |
+| End of `WhatShips` | dark → beige outline button | Code, docs, training, post-launch on-call. The whole package. | Start the accelerator → `#cta` |
+
+Layout per row (in Webflow, build as a Symbol so all four reuse the same pattern):
+- Top hairline divider
+- Two-column flex row (stacks on mobile)
+- Left column: headline (Golos Text · 20 px mobile / 24 px desktop · line-height 1.25 · max-width ~42 ch)
+- Right column: outline button (48 px tall · 32 × 12 px padding · 2 px radius · Golos 600 · 17 px · with up-right arrow icon)
+- Section padding above row: `pt-10` (40 px) + `mt-16 md:mt-20` (64–80 px from preceding content)
+
+The button label stays consistent across all four ("Start the accelerator"). The headline copy varies — short and punchy.
 
 ---
 

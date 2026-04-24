@@ -48,10 +48,12 @@ Alternating dark ↔ bright canvas. Never two same-theme sections in a row.
 | 14 | AcceleratorValue | bright | 12–18 mo vs 14 wk card pair. The "WITH" card is a premium dark tile with blue ambient glow — that's the visual hero of the comparison. |
 | 15 | Testimonials | dark | 2 quote cards (Jon + David), mint and blue accent bars. |
 | 16 | HowWeWork | bright | 3 premium dark tiles, accent stripes (blue / mint / grey). |
-| 17 | WhatShips | dark | 6-item deliverables manifest list. |
+| 17 | WhatShips | dark | 5-item deliverables manifest list ("Around the code"). |
 | 18 | FAQ | dark | Accordion. Use Webflow's native accordion or `<details>/<summary>`. |
-| 19 | CTA | dark | Single outline button + small advisor quote card. |
+| 19 | CTA | dark | Form + Kristaps quote card with real headshot at `assets/team/kristaps.png`. |
 | 20 | Footer | dark | Minimal — links + copyright. |
+
+**Note**: 4 inline CTA rows are scattered through the middle (after AcceleratorAtAGlance, after the 6 outcomes, after AcceleratorValue, after WhatShips). All link to `#cta`. Spec in `copy.md` → "Mid-page CTAs" section.
 
 ---
 

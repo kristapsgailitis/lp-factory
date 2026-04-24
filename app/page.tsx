@@ -595,14 +595,21 @@ function ProblemFires() {
           ))}
         </div>
 
-        {/* Category pullquote — industry framing (client-specific proof lives in ReferenceCase) */}
+        {/* Client pullquote — David van Gelder, Ops */}
         <Reveal>
           <figure className="max-w-[72ch] mx-auto text-center">
-            <blockquote className="font-head text-white text-[24px] md:text-[36px] lg:text-[42px] leading-[1.2] tracking-[-0.01em]">
-              The pattern is the same everywhere:{" "}
-              <span className="text-[var(--sw-mint)]">40 people doing what should take 25</span>.{" "}
-              The accelerator collapses that.
+            <svg aria-hidden className="mx-auto mb-6 h-8 opacity-60" viewBox="0 0 48 32" fill="none">
+              <path
+                d="M4 24 Q 4 4, 20 4 L 20 12 Q 14 12, 12 20 L 20 20 L 20 30 L 4 30 Z M28 24 Q 28 4, 44 4 L 44 12 Q 38 12, 36 20 L 44 20 L 44 30 L 28 30 Z"
+                fill="var(--sw-mint)"
+              />
+            </svg>
+            <blockquote className="font-head text-white text-[24px] md:text-[36px] lg:text-[44px] leading-[1.2] tracking-[-0.01em]">
+              We had <span className="text-[var(--sw-mint)]">40 people doing what should take 25</span>. Burning cash from all of these client service officers.
             </blockquote>
+            <figcaption className="mt-7 label-code text-white/60">
+              David van Gelder · Operations · Advanced Life
+            </figcaption>
           </figure>
         </Reveal>
       </div>
@@ -664,24 +671,55 @@ function Differentiator() {
 
         <div className="mt-14 md:mt-20 grid lg:grid-cols-[0.9fr_1.25fr] gap-12 lg:gap-20 items-start">
           {/* Left · numbered list of architecture decisions */}
-          <div className="space-y-8">
-            {decisions.map((d, i) => (
-              <Reveal key={d.n} delay={i * 0.1}>
-                <div className="flex gap-5 md:gap-7 border-b border-[var(--sw-black)]/10 pb-7 last:border-0">
-                  <div className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--sw-black)]/25 font-head font-semibold text-[13px] text-[var(--sw-black)]">
-                    {d.n}
+          <div className="relative">
+            {/* vertical spine connecting the three nodes */}
+            <div
+              className="absolute left-[22px] md:left-[26px] top-[22px] bottom-[40px] w-px pointer-events-none"
+              style={{
+                background:
+                  "repeating-linear-gradient(to bottom, rgba(63,74,175,0.35) 0, rgba(63,74,175,0.35) 4px, transparent 4px, transparent 8px)",
+              }}
+            />
+            <div className="space-y-1">
+              {decisions.map((d, i) => (
+                <Reveal key={d.n} delay={i * 0.1}>
+                  <div className="group relative flex gap-5 md:gap-7 pl-0 pr-2 py-6 border-b border-[var(--sw-black)]/10 last:border-0 transition-colors hover:bg-[var(--sw-blue)]/[0.03]">
+                    {/* left accent rail — grows on hover */}
+                    <span
+                      className="absolute left-0 top-6 bottom-6 w-[3px] bg-[var(--sw-blue)] opacity-60 group-hover:opacity-100 transition-opacity"
+                      aria-hidden
+                    />
+
+                    {/* numbered node */}
+                    <div
+                      className="relative shrink-0 inline-flex h-11 w-11 md:h-[52px] md:w-[52px] items-center justify-center rounded-full bg-[var(--sw-beige)] font-head font-semibold text-[13px] md:text-[14px] text-[var(--sw-blue)]"
+                      style={{
+                        border: "1.5px solid rgba(63,74,175,0.45)",
+                        boxShadow:
+                          "0 0 0 4px rgba(248,244,239,1), 0 0 0 5px rgba(63,74,175,0.14)",
+                      }}
+                    >
+                      {d.n}
+                    </div>
+
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="font-head text-[var(--sw-black)] text-[20px] md:text-[22px] leading-snug">
+                          {d.title}
+                        </h3>
+                        {/* subtle tag chip for visual weight */}
+                        <span className="hidden md:inline-flex label-code px-2 py-0.5 rounded-[2px] border border-[var(--sw-blue)]/25 text-[var(--sw-blue)]/80">
+                          {["parents", "products", "adapters"][i]}
+                        </span>
+                      </div>
+                      <p className="text-[14px] md:text-[15px] text-[var(--sw-black)]/70 leading-relaxed max-w-[54ch]">
+                        {d.body}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-head text-[var(--sw-black)] text-[20px] md:text-[22px] leading-snug mb-2">
-                      {d.title}
-                    </h3>
-                    <p className="text-[14px] md:text-[15px] text-[var(--sw-black)]/70 leading-relaxed max-w-[54ch]">
-                      {d.body}
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              ))}
+            </div>
           </div>
 
           {/* Right · schema-style entity diagram */}
@@ -1703,13 +1741,13 @@ function SvgSSO() {
   const W = 720;
   const H = 420;
 
-  const providers: { name: string; sub: string; users: string; color: string; glyph: "aws" | "ms" | "g" }[] = [
-    { name: "AWS Cognito", sub: "SAML · JWT", users: "School admins", color: "#FF5A31", glyph: "aws" },
-    { name: "Microsoft Entra ID", sub: "OIDC · SAML", users: "Internal staff", color: "#3F4AAF", glyph: "ms" },
-    { name: "Google OAuth 2.0", sub: "OIDC", users: "Parents · commerce", color: "#6EF76E", glyph: "g" },
+  const providers: { name: string; sub: string; users: string; color: string; letters: string }[] = [
+    { name: "AWS Cognito", sub: "SAML · JWT", users: "School admins", color: "#FF5A31", letters: "AW" },
+    { name: "Microsoft Entra ID", sub: "OIDC · SAML", users: "Internal staff", color: "#3F4AAF", letters: "MS" },
+    { name: "Google OAuth 2.0", sub: "OIDC", users: "Parents · commerce", color: "#6EF76E", letters: "GO" },
   ];
 
-  const logs = [
+  const logs: [string, string, string, string][] = [
     ["09:42:11", "school.admin", "login", "OK"],
     ["09:42:58", "student.edit", "114 rows", "OK"],
     ["09:44:03", "export.start", "grade-5", "OK"],
@@ -1718,27 +1756,37 @@ function SvgSSO() {
     ["09:52:02", "export.done", "4.2 MB", "OK"],
   ];
 
-  // hub centre
-  const hx = 360;
+  // hub — placed to the right of the trunk line
+  const hx = 380;
   const hy = 210;
+  const hubR = 44;
+  const trunkX = 280;
+
+  // provider layout
+  const cardX = 20;
+  const cardW = 240;
+  const cardH = 78;
+  const firstY = 48;
+  const gapY = 100;
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Dual SSO with audit pipeline">
       <defs>
         <radialGradient id="ssoRing" cx="0.5" cy="0.5" r="0.5">
           <stop offset="0%" stopColor="#6EF76E" stopOpacity="0.0" />
-          <stop offset="70%" stopColor="#6EF76E" stopOpacity="0.08" />
+          <stop offset="70%" stopColor="#6EF76E" stopOpacity="0.1" />
           <stop offset="100%" stopColor="#6EF76E" stopOpacity="0.0" />
         </radialGradient>
       </defs>
 
-      <text x={20} y={28} fill="rgba(255,255,255,0.55)" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2">
+      <text x={20} y={26} fill="rgba(255,255,255,0.55)" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2">
         IDENTITY PROVIDERS
       </text>
 
       {/* Provider cards */}
       {providers.map((p, i) => {
-        const y = 52 + i * 96;
+        const y = firstY + i * gapY;
+        const midY = y + cardH / 2;
         return (
           <motion.g
             key={p.name}
@@ -1748,78 +1796,155 @@ function SvgSSO() {
             viewport={{ once: true, amount: 0.25 }}
           >
             {/* card */}
-            <rect x={20} y={y} width={210} height={72} rx={3} fill="rgba(230,231,239,0.03)" stroke="rgba(230,231,239,0.12)" strokeWidth={1} />
+            <rect
+              x={cardX}
+              y={y}
+              width={cardW}
+              height={cardH}
+              rx={3}
+              fill="rgba(230,231,239,0.035)"
+              stroke="rgba(230,231,239,0.12)"
+              strokeWidth={1}
+            />
             {/* left accent bar */}
-            <rect x={20} y={y} width={3} height={72} fill={p.color} />
+            <rect x={cardX} y={y} width={3} height={cardH} fill={p.color} />
 
-            {/* brand glyph */}
-            <g transform={`translate(${38}, ${y + 18})`}>
-              {p.glyph === "aws" && (
-                <g>
-                  <path d="M 0 22 C 10 30, 26 30, 36 22" fill="none" stroke={p.color} strokeWidth={1.8} />
-                  <path d="M 4 24 L 36 24" stroke={p.color} strokeWidth={1.3} strokeDasharray="2 2" />
-                  <text x={18} y={14} fill="#fff" fontSize="10" fontFamily="JetBrains Mono" fontWeight="700" textAnchor="middle" letterSpacing="1">AWS</text>
-                </g>
-              )}
-              {p.glyph === "ms" && (
-                <g>
-                  <rect x={0} y={0} width={16} height={16} fill={p.color} opacity={0.9} />
-                  <rect x={18} y={0} width={16} height={16} fill={p.color} opacity={0.6} />
-                  <rect x={0} y={18} width={16} height={16} fill={p.color} opacity={0.6} />
-                  <rect x={18} y={18} width={16} height={16} fill={p.color} opacity={0.9} />
-                </g>
-              )}
-              {p.glyph === "g" && (
-                <g>
-                  <circle cx={17} cy={17} r={16} fill="none" stroke={p.color} strokeWidth={2} />
-                  <path d={`M 17 17 L 33 17 L 33 23 L 19 23`} fill="none" stroke={p.color} strokeWidth={2} />
-                  <text x={17} y={22} fill={p.color} fontSize="13" fontFamily="Golos Text" fontWeight="700" textAnchor="middle">G</text>
-                </g>
-              )}
+            {/* Brand badge — clean colored chip with 2-letter ID */}
+            <g>
+              <rect
+                x={cardX + 16}
+                y={y + 18}
+                width={42}
+                height={42}
+                rx={3}
+                fill={p.color}
+                opacity={0.14}
+              />
+              <rect
+                x={cardX + 16}
+                y={y + 18}
+                width={42}
+                height={42}
+                rx={3}
+                fill="none"
+                stroke={p.color}
+                strokeWidth={1.2}
+                strokeOpacity={0.9}
+              />
+              <text
+                x={cardX + 37}
+                y={y + 45}
+                fill={p.color}
+                fontSize="15"
+                fontFamily="JetBrains Mono"
+                fontWeight="700"
+                textAnchor="middle"
+                letterSpacing="0.5"
+              >
+                {p.letters}
+              </text>
             </g>
 
             {/* name · sub · users */}
-            <text x={90} y={y + 24} fill="#fff" fontSize="13" fontFamily="Inter" fontWeight="600">
+            <text
+              x={cardX + 70}
+              y={y + 28}
+              fill="#fff"
+              fontSize="13"
+              fontFamily="Inter"
+              fontWeight="600"
+            >
               {p.name}
             </text>
-            <text x={90} y={y + 40} fill={p.color} fontSize="9" fontFamily="JetBrains Mono" letterSpacing="1.5">
+            <text
+              x={cardX + 70}
+              y={y + 45}
+              fill={p.color}
+              fontSize="9"
+              fontFamily="JetBrains Mono"
+              letterSpacing="1.5"
+            >
               {p.sub.toUpperCase()}
             </text>
-            <text x={90} y={y + 58} fill="rgba(255,255,255,0.6)" fontSize="10" fontFamily="Inter">
+            <text
+              x={cardX + 70}
+              y={y + 62}
+              fill="rgba(255,255,255,0.6)"
+              fontSize="10"
+              fontFamily="Inter"
+            >
               {p.users}
             </text>
 
-            {/* packet dot traveling to hub */}
+            {/* feeder line · card right edge to trunk */}
+            <DrawnPath
+              d={`M ${cardX + cardW} ${midY} H ${trunkX}`}
+              stroke={p.color}
+              strokeOpacity={0.5}
+              strokeWidth={1}
+              strokeDasharray="3 4"
+              duration={0.5}
+              delay={0.5 + i * 0.08}
+            />
+            {/* trunk junction dot */}
             <motion.circle
-              r={3}
+              cx={trunkX}
+              cy={midY}
+              r={2.5}
               fill={p.color}
-              initial={{ cx: 230, cy: y + 36, opacity: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 1.0 + i * 0.08, duration: 0.3 }}
+              viewport={{ once: true, amount: 0.25 }}
+            />
+
+            {/* packet dot traveling along feeder */}
+            <motion.circle
+              r={2.5}
+              fill={p.color}
+              initial={{ cx: cardX + cardW, cy: midY, opacity: 0 }}
               animate={{
-                cx: [230, hx],
-                cy: [y + 36, hy],
+                cx: [cardX + cardW, trunkX],
                 opacity: [0, 1, 1, 0],
               }}
               transition={{
-                delay: 1.4 + i * 0.4,
-                duration: 1.6,
+                delay: 1.6 + i * 0.35,
+                duration: 1.2,
                 repeat: Infinity,
                 repeatDelay: 2.5,
-                times: [0, 0.15, 0.85, 1],
+                times: [0, 0.2, 0.8, 1],
               }}
-            />
-
-            {/* static connector path */}
-            <path
-              d={`M 230 ${y + 36} Q 290 ${y + 36}, ${hx} ${hy}`}
-              fill="none"
-              stroke={p.color}
-              strokeOpacity={0.3}
-              strokeWidth={1}
-              strokeDasharray="2 4"
             />
           </motion.g>
         );
       })}
+
+      {/* Vertical trunk connecting all three providers */}
+      <DrawnPath
+        d={`M ${trunkX} ${firstY + cardH / 2} L ${trunkX} ${firstY + cardH / 2 + 2 * gapY}`}
+        stroke="rgba(110,247,110,0.5)"
+        strokeWidth={1.2}
+        duration={0.8}
+        delay={0.9}
+      />
+
+      {/* Single feeder from trunk mid-point to hub left edge */}
+      <DrawnPath
+        d={`M ${trunkX} ${hy} L ${hx - hubR} ${hy}`}
+        stroke="rgba(110,247,110,0.7)"
+        strokeWidth={1.3}
+        strokeDasharray="3 4"
+        duration={0.5}
+        delay={1.2}
+      />
+      <motion.polygon
+        points={`${hx - hubR - 2} ${hy - 4}, ${hx - hubR + 4} ${hy}, ${hx - hubR - 2} ${hy + 4}`}
+        fill="#6EF76E"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 1.7, duration: 0.3 }}
+        viewport={{ once: true, amount: 0.25 }}
+      />
 
       {/* HUB — audit core */}
       <motion.g
@@ -1829,12 +1954,12 @@ function SvgSSO() {
         viewport={{ once: true, amount: 0.25 }}
       >
         {/* soft green ambient */}
-        <circle cx={hx} cy={hy} r={80} fill="url(#ssoRing)" />
-        {/* orbit rings */}
+        <circle cx={hx} cy={hy} r={76} fill="url(#ssoRing)" />
+        {/* rotating orbit ring */}
         <motion.circle
           cx={hx}
           cy={hy}
-          r={52}
+          r={hubR + 12}
           fill="none"
           stroke="rgba(110,247,110,0.35)"
           strokeWidth={1}
@@ -1844,7 +1969,8 @@ function SvgSSO() {
           transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
           style={{ transformOrigin: `${hx}px ${hy}px` }}
         />
-        <circle cx={hx} cy={hy} r={40} fill="rgba(16,19,44,0.8)" stroke="rgba(110,247,110,0.8)" strokeWidth={1.5} />
+        {/* hub body */}
+        <circle cx={hx} cy={hy} r={hubR} fill="rgba(16,19,44,0.85)" stroke="rgba(110,247,110,0.85)" strokeWidth={1.5} />
         {/* lock glyph */}
         <path
           d={`M ${hx - 10} ${hy - 2} h 20 v 16 h -20 z`}
@@ -1860,18 +1986,25 @@ function SvgSSO() {
         />
         <circle cx={hx} cy={hy + 6} r={1.8} fill="#6EF76E" />
         {/* label */}
-        <text x={hx} y={hy + 62} fill="#6EF76E" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2" textAnchor="middle" fontWeight="700">
+        <text x={hx} y={hy + hubR + 22} fill="#6EF76E" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2" textAnchor="middle" fontWeight="700">
           AUDIT · SYSTEM LEVEL
         </text>
-        <text x={hx} y={hy + 78} fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="1">
+        <text x={hx} y={hy + hubR + 38} fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="JetBrains Mono" textAnchor="middle" letterSpacing="1">
           every login · every action
         </text>
       </motion.g>
 
-      {/* pipeline arrow hub → log */}
-      <DrawnPath d={`M ${hx + 40} ${hy} H 480`} stroke="rgba(110,247,110,0.55)" strokeWidth={1} strokeDasharray="3 4" delay={1.0} duration={0.5} />
+      {/* pipeline arrow hub → log panel */}
+      <DrawnPath
+        d={`M ${hx + hubR} ${hy} H 484`}
+        stroke="rgba(110,247,110,0.55)"
+        strokeWidth={1}
+        strokeDasharray="3 4"
+        delay={1.0}
+        duration={0.5}
+      />
       <motion.polygon
-        points={`478 ${hy - 4}, 486 ${hy}, 478 ${hy + 4}`}
+        points={`482 ${hy - 4}, 490 ${hy}, 482 ${hy + 4}`}
         fill="#6EF76E"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -2054,7 +2187,61 @@ function OutcomeBlockRow({ n, kicker, title, lede, results, diagram, theme, reve
     <section id={`outcome-${n}`} className={`${bg} relative overflow-hidden scroll-mt-24`}>
       {/* section hairline on light sections */}
       {!dark && <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/10" />}
-      <div className="wrap py-24 md:py-32">
+
+      {/* Bright-section editorial depth · ghost outcome number + side ruler + corner ticks */}
+      {!dark && (
+        <>
+          {/* Massive ghost outcome number drifting off the edge */}
+          <div
+            aria-hidden
+            className="absolute pointer-events-none select-none hidden md:block"
+            style={{
+              [reverse ? "right" : "left"]: "-3%",
+              top: "50%",
+              transform: "translateY(-50%)",
+              fontFamily: "var(--font-golos)",
+              fontWeight: 700,
+              fontSize: "clamp(260px, 32vw, 460px)",
+              lineHeight: 0.85,
+              color: "rgba(63, 74, 175, 0.055)",
+              letterSpacing: "-0.05em",
+            }}
+          >
+            {n}
+          </div>
+
+          {/* Side ruler — vertical editorial label */}
+          <div
+            aria-hidden
+            className="hidden lg:flex absolute flex-col items-center gap-3 z-0"
+            style={{
+              [reverse ? "left" : "right"]: "24px",
+              top: "50%",
+              transform: "translateY(-50%)",
+            }}
+          >
+            <span className="h-10 w-px bg-[var(--sw-black)]/20" />
+            <span
+              className="label-code text-[var(--sw-black)]/45"
+              style={{
+                writingMode: "vertical-rl",
+                letterSpacing: "0.3em",
+              }}
+            >
+              OUTCOME / {n}
+            </span>
+            <span className="h-10 w-px bg-[var(--sw-black)]/20" />
+          </div>
+
+          {/* Corner tick marks at section extents */}
+          <span className="absolute top-6 left-6 w-3 h-3 border-t border-l border-[var(--sw-black)]/20 pointer-events-none" />
+          <span className="absolute top-6 right-6 w-3 h-3 border-t border-r border-[var(--sw-black)]/20 pointer-events-none" />
+          <span className="absolute bottom-6 left-6 w-3 h-3 border-b border-l border-[var(--sw-black)]/20 pointer-events-none" />
+          <span className="absolute bottom-6 right-6 w-3 h-3 border-b border-r border-[var(--sw-black)]/20 pointer-events-none" />
+        </>
+      )}
+
+      <div className="wrap relative py-24 md:py-32">
         <div className={`grid gap-12 lg:gap-16 md:grid-cols-2 items-center`}>
           <Reveal className={reverse ? "md:order-2" : "md:order-1"}>
             <div className="flex items-center gap-3 mb-6">

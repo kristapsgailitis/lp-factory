@@ -671,55 +671,32 @@ function Differentiator() {
 
         <div className="mt-14 md:mt-20 grid lg:grid-cols-[0.9fr_1.25fr] gap-12 lg:gap-20 items-start">
           {/* Left · numbered list of architecture decisions */}
-          <div className="relative">
-            {/* vertical spine connecting the three nodes */}
-            <div
-              className="absolute left-[22px] md:left-[26px] top-[22px] bottom-[40px] w-px pointer-events-none"
-              style={{
-                background:
-                  "repeating-linear-gradient(to bottom, rgba(63,74,175,0.35) 0, rgba(63,74,175,0.35) 4px, transparent 4px, transparent 8px)",
-              }}
-            />
-            <div className="space-y-1">
-              {decisions.map((d, i) => (
-                <Reveal key={d.n} delay={i * 0.1}>
-                  <div className="group relative flex gap-5 md:gap-7 pl-0 pr-2 py-6 border-b border-[var(--sw-black)]/10 last:border-0 transition-colors hover:bg-[var(--sw-blue)]/[0.03]">
-                    {/* left accent rail — grows on hover */}
-                    <span
-                      className="absolute left-0 top-6 bottom-6 w-[3px] bg-[var(--sw-blue)] opacity-60 group-hover:opacity-100 transition-opacity"
-                      aria-hidden
-                    />
-
-                    {/* numbered node */}
-                    <div
-                      className="relative shrink-0 inline-flex h-11 w-11 md:h-[52px] md:w-[52px] items-center justify-center rounded-full bg-[var(--sw-beige)] font-head font-semibold text-[13px] md:text-[14px] text-[var(--sw-blue)]"
-                      style={{
-                        border: "1.5px solid rgba(63,74,175,0.45)",
-                        boxShadow:
-                          "0 0 0 4px rgba(248,244,239,1), 0 0 0 5px rgba(63,74,175,0.14)",
-                      }}
-                    >
-                      {d.n}
-                    </div>
-
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="font-head text-[var(--sw-black)] text-[20px] md:text-[22px] leading-snug">
-                          {d.title}
-                        </h3>
-                        {/* subtle tag chip for visual weight */}
-                        <span className="hidden md:inline-flex label-code px-2 py-0.5 rounded-[2px] border border-[var(--sw-blue)]/25 text-[var(--sw-blue)]/80">
-                          {["parents", "products", "adapters"][i]}
-                        </span>
-                      </div>
-                      <p className="text-[14px] md:text-[15px] text-[var(--sw-black)]/70 leading-relaxed max-w-[54ch]">
-                        {d.body}
-                      </p>
-                    </div>
+          <div>
+            {decisions.map((d, i) => (
+              <Reveal key={d.n} delay={i * 0.1}>
+                <div className="flex gap-5 md:gap-7 py-7 border-b border-[var(--sw-black)]/10 last:border-0">
+                  <div
+                    className="shrink-0 inline-flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-full bg-white font-head font-semibold text-[13px] md:text-[14px] text-[var(--sw-blue)]"
+                    style={{ border: "1.5px solid rgba(63,74,175,0.4)" }}
+                  >
+                    {d.n}
                   </div>
-                </Reveal>
-              ))}
-            </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-3 mb-2 flex-wrap">
+                      <h3 className="font-head text-[var(--sw-black)] text-[20px] md:text-[22px] leading-snug">
+                        {d.title}
+                      </h3>
+                      <span className="label-code px-2 py-0.5 rounded-[2px] border border-[var(--sw-blue)]/25 text-[var(--sw-blue)]/80">
+                        {["parents", "products", "adapters"][i]}
+                      </span>
+                    </div>
+                    <p className="text-[14px] md:text-[15px] text-[var(--sw-black)]/70 leading-relaxed max-w-[54ch]">
+                      {d.body}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
 
           {/* Right · schema-style entity diagram */}
@@ -1523,18 +1500,25 @@ function SvgDataGraph() {
 }
 
 function SvgIdCard() {
-  // CSV chaos → realistic ID card preview → audited export pipeline
+  // Two-panel split · BEFORE (CSV chaos) on left | AFTER (ID card + pipeline) on right
   const W = 720;
   const H = 420;
 
-  // card anchor
-  const cx = 400;
-  const cy = 110;
-  const cw = 300;
-  const ch = 180;
+  // Split geometry
+  const leftW = 280;
+  const leftPad = 20;
+  const divX = 300;
+  const rightX = 320;
+  const rightW = W - rightX - 20;
+
+  // AFTER side — ID card anchor
+  const cx = rightX + 24;
+  const cy = 54;
+  const cw = rightW - 48;
+  const ch = 200;
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="ID card builder · preview, lock, export, audit">
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="ID card builder · before CSV chaos, after in-platform builder">
       <defs>
         <linearGradient id="idFaceSkin" x1="0" x2="0" y1="0" y2="1">
           <stop offset="0%" stopColor="#DADCF1" />
@@ -1546,65 +1530,97 @@ function SvgIdCard() {
         </linearGradient>
       </defs>
 
-      {/* LEFT · CSV email chaos, struck through */}
-      <text x={20} y={28} fill="rgba(224,79,79,0.9)" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2">
-        BEFORE · CSV EMAIL CHAIN
-      </text>
-      {[0, 1, 2, 3].map((i) => (
-        <motion.g
-          key={i}
-          initial={{ opacity: 0, x: -6 }}
-          whileInView={{ opacity: 0.55 + i * 0.1, x: 0 }}
-          transition={{ delay: 0.1 + i * 0.08, duration: 0.45 }}
-          viewport={{ once: true, amount: 0.25 }}
-        >
-          <rect
-            x={20 + i * 5}
-            y={50 + i * 52}
-            width={300}
-            height={44}
-            rx={2}
-            fill="rgba(224,79,79,0.04)"
-            stroke="rgba(224,79,79,0.4)"
-            strokeWidth={1}
-          />
-          <rect x={20 + i * 5} y={50 + i * 52} width={3} height={44} fill="#E04F4F" opacity={0.75} />
-          <circle cx={42 + i * 5} cy={72 + i * 52} r={3} fill="#E04F4F" />
-          <text x={54 + i * 5} y={70 + i * 52} fill="#fff" fontSize="11" fontFamily="JetBrains Mono">
-            RE: RE: cards-v{4 - i}.csv
-          </text>
-          <text x={54 + i * 5} y={86 + i * 52} fill="rgba(255,255,255,0.5)" fontSize="9" fontFamily="JetBrains Mono">
-            {["3 threads, 12 replies", "merge conflicts", "which version is final?", "lost in inbox"][i]}
-          </text>
-          {/* strike-through */}
-          <motion.line
-            x1={20 + i * 5}
-            y1={72 + i * 52}
-            x2={320 + i * 5}
-            y2={72 + i * 52}
-            stroke="#E04F4F"
-            strokeOpacity={0.5}
-            strokeWidth={1}
-            initial={{ pathLength: 0 }}
-            whileInView={{ pathLength: 1 }}
-            transition={{ delay: 0.9 + i * 0.08, duration: 0.45 }}
-            viewport={{ once: true, amount: 0.25 }}
-          />
-        </motion.g>
-      ))}
-
-      {/* pipeline arrow */}
-      <DrawnPath d={`M 330 210 L 370 ${cy + ch / 2}`} stroke="rgba(110,247,110,0.7)" strokeWidth={1.3} strokeDasharray="4 4" delay={1.3} duration={0.6} />
-      <motion.polygon
-        points={`${370} ${cy + ch / 2 - 4}, ${378} ${cy + ch / 2}, ${370} ${cy + ch / 2 + 4}`}
-        fill="#6EF76E"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 1.85, duration: 0.3 }}
-        viewport={{ once: true, amount: 0.25 }}
+      {/* Vertical divider — splits BEFORE / AFTER */}
+      <DrawnPath
+        d={`M ${divX} 40 V ${H - 40}`}
+        stroke="rgba(230,231,239,0.14)"
+        strokeWidth={1}
+        strokeDasharray="3 5"
+        duration={1}
       />
 
-      {/* RIGHT · after label */}
+      {/* ======================================== LEFT PANEL · BEFORE ======================================== */}
+      <text x={leftPad} y={28} fill="rgba(224,79,79,0.9)" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2">
+        BEFORE · CSV EMAIL CHAIN
+      </text>
+
+      {(() => {
+        // 3 email threads, clean vertical stack, no offset-pile
+        const threads = [
+          { v: "v4", meta: "3 threads · 12 replies" },
+          { v: "v3", meta: "merge conflicts" },
+          { v: "v2", meta: "which version is final?" },
+        ];
+        const threadX = leftPad;
+        const threadW = leftW;
+        const threadH = 54;
+        const threadGap = 16;
+        const firstY = 58;
+        return threads.map((t, i) => {
+          const y = firstY + i * (threadH + threadGap);
+          return (
+            <motion.g
+              key={t.v}
+              initial={{ opacity: 0, x: -6 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 + i * 0.08, duration: 0.45 }}
+              viewport={{ once: true, amount: 0.25 }}
+            >
+              <rect
+                x={threadX}
+                y={y}
+                width={threadW}
+                height={threadH}
+                rx={2}
+                fill="rgba(224,79,79,0.05)"
+                stroke="rgba(224,79,79,0.4)"
+                strokeWidth={1}
+              />
+              <rect x={threadX} y={y} width={3} height={threadH} fill="#E04F4F" opacity={0.75} />
+              {/* subject line + status */}
+              <circle cx={threadX + 22} cy={y + 22} r={3} fill="#E04F4F" />
+              <text x={threadX + 34} y={y + 25} fill="#fff" fontSize="12" fontFamily="JetBrains Mono">
+                RE: RE: cards-{t.v}.csv
+              </text>
+              <text x={threadX + 34} y={y + 42} fill="rgba(255,255,255,0.5)" fontSize="10" fontFamily="JetBrains Mono">
+                {t.meta}
+              </text>
+              {/* strike-through on subject */}
+              <motion.line
+                x1={threadX + 34}
+                y1={y + 22}
+                x2={threadX + threadW - 12}
+                y2={y + 22}
+                stroke="#E04F4F"
+                strokeOpacity={0.55}
+                strokeWidth={1}
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ delay: 0.8 + i * 0.1, duration: 0.45 }}
+                viewport={{ once: true, amount: 0.25 }}
+              />
+            </motion.g>
+          );
+        });
+      })()}
+
+      {/* BEFORE footer count */}
+      <motion.text
+        x={leftPad}
+        y={H - 30}
+        fill="rgba(224,79,79,0.75)"
+        fontSize="10"
+        fontFamily="JetBrains Mono"
+        letterSpacing="1.5"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 1.3, duration: 0.4 }}
+        viewport={{ once: true, amount: 0.25 }}
+      >
+        ↯ 14 THREADS · 52 REPLIES
+      </motion.text>
+
+      {/* ======================================== RIGHT PANEL · AFTER ======================================== */}
       <text x={W - 20} y={28} fill="#6EF76E" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2" textAnchor="end">
         AFTER · IN-PLATFORM BUILDER
       </text>
@@ -1613,35 +1629,36 @@ function SvgIdCard() {
       <motion.g
         initial={{ opacity: 0, y: 10, scale: 0.97 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ delay: 0.5, duration: 0.55 }}
+        transition={{ delay: 0.45, duration: 0.55 }}
         viewport={{ once: true, amount: 0.25 }}
       >
         {/* card body */}
         <rect x={cx} y={cy} width={cw} height={ch} rx={4} fill="url(#idCardBg)" stroke="rgba(16,19,44,0.15)" strokeWidth={1} />
         {/* left accent bar */}
         <rect x={cx} y={cy} width={6} height={ch} fill="#3F4AAF" />
+
         {/* top header row */}
-        <rect x={cx + 18} y={cy + 14} width={80} height={12} rx={1.5} fill="#10132C" />
-        <text x={cx + 22} y={cy + 23} fill="#fff" fontSize="8" fontFamily="JetBrains Mono" letterSpacing="1.5" fontWeight="700">
+        <rect x={cx + 18} y={cy + 14} width={96} height={14} rx={2} fill="#10132C" />
+        <text x={cx + 24} y={cy + 24} fill="#fff" fontSize="8" fontFamily="JetBrains Mono" letterSpacing="1.5" fontWeight="700">
           LINCOLN HIGH
         </text>
-        <text x={cx + cw - 18} y={cy + 22} fill="rgba(16,19,44,0.55)" fontSize="8" fontFamily="JetBrains Mono" textAnchor="end" letterSpacing="1.5">
+        <text x={cx + cw - 18} y={cy + 24} fill="rgba(16,19,44,0.55)" fontSize="8" fontFamily="JetBrains Mono" textAnchor="end" letterSpacing="1.5">
           2026 / GRADE 10
         </text>
 
         {/* photo frame with stylized silhouette */}
-        <rect x={cx + 18} y={cy + 36} width={76} height={92} rx={2} fill="#1f2346" />
-        <circle cx={cx + 56} cy={cy + 70} r={16} fill="url(#idFaceSkin)" />
+        <rect x={cx + 18} y={cy + 40} width={78} height={100} rx={2} fill="#1f2346" />
+        <circle cx={cx + 57} cy={cy + 74} r={16} fill="url(#idFaceSkin)" />
         <path
-          d={`M ${cx + 32} ${cy + 122} Q ${cx + 56} ${cy + 94}, ${cx + 80} ${cy + 122} L ${cx + 80} ${cy + 128} L ${cx + 32} ${cy + 128} Z`}
+          d={`M ${cx + 33} ${cy + 132} Q ${cx + 57} ${cy + 100}, ${cx + 81} ${cy + 132} L ${cx + 81} ${cy + 140} L ${cx + 33} ${cy + 140} Z`}
           fill="url(#idFaceSkin)"
         />
         {/* photo frame corner ticks */}
         {[
-          [cx + 18, cy + 36],
-          [cx + 94, cy + 36],
-          [cx + 18, cy + 128],
-          [cx + 94, cy + 128],
+          [cx + 18, cy + 40],
+          [cx + 96, cy + 40],
+          [cx + 18, cy + 140],
+          [cx + 96, cy + 140],
         ].map(([x, y], i) => (
           <g key={i}>
             <line x1={x - 2} x2={x + 4} y1={y} y2={y} stroke="rgba(255,255,255,0.6)" strokeWidth={1} />
@@ -1650,10 +1667,10 @@ function SvgIdCard() {
         ))}
 
         {/* name + meta */}
-        <text x={cx + 110} y={cy + 56} fill="#10132C" fontSize="15" fontFamily="Golos Text" fontWeight="700">
+        <text x={cx + 114} y={cy + 58} fill="#10132C" fontSize="16" fontFamily="Golos Text" fontWeight="700">
           Aidan Park
         </text>
-        <text x={cx + 110} y={cy + 74} fill="rgba(16,19,44,0.7)" fontSize="10" fontFamily="Inter">
+        <text x={cx + 114} y={cy + 76} fill="rgba(16,19,44,0.7)" fontSize="10" fontFamily="Inter">
           Student ID · 4452981
         </text>
 
@@ -1665,24 +1682,24 @@ function SvgIdCard() {
           ["EXPIRES", "12 / 2026"],
         ].map(([k, v], i) => (
           <g key={i}>
-            <text x={cx + 110} y={cy + 96 + i * 14} fill="rgba(16,19,44,0.45)" fontSize="8" fontFamily="JetBrains Mono" letterSpacing="1.5">
+            <text x={cx + 114} y={cy + 98 + i * 14} fill="rgba(16,19,44,0.45)" fontSize="8" fontFamily="JetBrains Mono" letterSpacing="1.5">
               {k}
             </text>
-            <text x={cx + 170} y={cy + 96 + i * 14} fill="#10132C" fontSize="10" fontFamily="JetBrains Mono">
+            <text x={cx + 176} y={cy + 98 + i * 14} fill="#10132C" fontSize="10" fontFamily="JetBrains Mono">
               {v}
             </text>
           </g>
         ))}
 
         {/* barcode strip */}
-        <g transform={`translate(${cx + 18}, ${cy + 148})`}>
-          {Array.from({ length: 44 }).map((_, i) => (
+        <g transform={`translate(${cx + 18}, ${cy + 162})`}>
+          {Array.from({ length: Math.floor((cw - 36) / 6.3) }).map((_, i) => (
             <rect
               key={i}
               x={i * 6.3}
               y={0}
               width={i % 3 === 0 ? 3 : i % 2 === 0 ? 1.4 : 2}
-              height={14}
+              height={16}
               fill="#10132C"
               opacity={0.85}
             />
@@ -1699,16 +1716,23 @@ function SvgIdCard() {
           { label: "Preview", meta: "1,420 cards", color: "#6EF76E" },
           { label: "Lock", meta: "v1 final", color: "#3F4AAF" },
           { label: "Export", meta: "CSV · print", color: "#3F4AAF" },
-          { label: "Audit log", meta: "every action", color: "#6EF76E" },
+          { label: "Audit", meta: "every action", color: "#6EF76E" },
         ];
-        const stripY = cy + ch + 32;
-        const stripW = cw;
+        const stripY = cy + ch + 34;
         const gap = 8;
-        const tileW = (stripW - gap * 3) / 4;
+        const tileW = (cw - gap * 3) / 4;
         return (
           <g>
-            {/* rail */}
-            <line x1={cx + 4} x2={cx + cw - 4} y1={stripY + 22} y2={stripY + 22} stroke="rgba(110,247,110,0.2)" strokeWidth={0.8} strokeDasharray="2 3" />
+            {/* connecting rail behind the chips */}
+            <line
+              x1={cx + tileW / 2}
+              x2={cx + cw - tileW / 2}
+              y1={stripY + 22}
+              y2={stripY + 22}
+              stroke="rgba(110,247,110,0.25)"
+              strokeWidth={1}
+              strokeDasharray="3 4"
+            />
             {stages.map((s, i) => {
               const x = cx + i * (tileW + gap);
               return (
@@ -1716,15 +1740,24 @@ function SvgIdCard() {
                   key={s.label}
                   initial={{ opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.0 + i * 0.12, duration: 0.4 }}
+                  transition={{ delay: 0.9 + i * 0.12, duration: 0.4 }}
                   viewport={{ once: true, amount: 0.25 }}
                 >
-                  <rect x={x} y={stripY} width={tileW} height={44} rx={2} fill="rgba(16,19,44,0.4)" stroke="rgba(230,231,239,0.12)" strokeWidth={1} />
-                  <circle cx={x + 10} cy={stripY + 14} r={3.5} fill={s.color} />
-                  <text x={x + 20} y={stripY + 18} fill="#fff" fontSize="11" fontFamily="Inter" fontWeight="600">
+                  <rect
+                    x={x}
+                    y={stripY}
+                    width={tileW}
+                    height={46}
+                    rx={3}
+                    fill="rgba(16,19,44,0.55)"
+                    stroke="rgba(230,231,239,0.14)"
+                    strokeWidth={1}
+                  />
+                  <circle cx={x + 10} cy={stripY + 15} r={3.5} fill={s.color} />
+                  <text x={x + 20} y={stripY + 19} fill="#fff" fontSize="11" fontFamily="Inter" fontWeight="600">
                     {s.label}
                   </text>
-                  <text x={x + 10} y={stripY + 34} fill="rgba(255,255,255,0.55)" fontSize="9" fontFamily="JetBrains Mono">
+                  <text x={x + 10} y={stripY + 36} fill="rgba(255,255,255,0.6)" fontSize="9" fontFamily="JetBrains Mono">
                     {s.meta}
                   </text>
                 </motion.g>

@@ -271,13 +271,14 @@ function HeroSpecCard() {
 
 /* Client-logo trust bar — mirrors scandiweb.com current lineup */
 function TrustLogos() {
-  const logos = [
-    { src: "/logos/clients/puma.svg",     alt: "PUMA" },
-    { src: "/logos/clients/michigan.svg", alt: "University of Michigan" },
-    { src: "/logos/clients/nytimes.svg",  alt: "The New York Times" },
-    { src: "/logos/clients/adobe.svg",    alt: "Adobe" },
-    { src: "/logos/clients/acer.png",     alt: "Acer" },
-    { src: "/logos/clients/samsung.svg",  alt: "Samsung" },
+  const logos: { src: string; alt: string; h: number }[] = [
+    { src: "/logos/clients/puma.svg",      alt: "PUMA",                            h: 30 },
+    { src: "/logos/clients/olympus.png",   alt: "OM Digital Solutions / Olympus",  h: 24 },
+    { src: "/logos/clients/boyscouts.png", alt: "Boy Scouts of America",           h: 28 },
+    { src: "/logos/clients/nytimes.svg",   alt: "The New York Times",              h: 22 },
+    { src: "/logos/clients/samsung.svg",   alt: "Samsung",                         h: 22 },
+    { src: "/logos/clients/acer.png",      alt: "Acer",                            h: 22 },
+    { src: "/logos/clients/adobe.svg",     alt: "Adobe",                           h: 22 },
   ];
   return (
     <div
@@ -291,7 +292,7 @@ function TrustLogos() {
         <div className="font-head font-bold text-white text-[16px] md:text-[18px] leading-[1.35] max-w-[18ch] shrink-0">
           Trusted by 600+ leading brands worldwide
         </div>
-        <div className="flex flex-wrap items-center gap-x-8 md:gap-x-12 gap-y-5 flex-1 md:justify-end">
+        <div className="flex flex-wrap items-center gap-x-8 md:gap-x-10 gap-y-5 flex-1 md:justify-end">
           {logos.map((l, i) => (
             <img
               key={i}
@@ -299,7 +300,7 @@ function TrustLogos() {
               alt={l.alt}
               className="w-auto opacity-80"
               style={{
-                maxHeight: "22px",
+                maxHeight: `${l.h}px`,
                 height: "auto",
                 filter: "brightness(0) invert(1)",
               }}

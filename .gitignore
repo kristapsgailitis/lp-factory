@@ -41,4 +41,5 @@ yarn-error.log*
 next-env.d.ts
 lp-v2-webflow-handoff.zip
 lp-v2-static-html.zip
+lp-v2-webflow-handoff/
 /out

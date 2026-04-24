@@ -337,16 +337,15 @@ function Hero() {
                 <span style={{ color: "var(--sw-mint)" }}>commerce</span>
               </h1>
 
-              {/* Subhead — product-first */}
+              {/* Subhead — lead with ready-to-go platform, not a module list */}
               <p className="mt-7 md:mt-8 text-[16px] md:text-[18px] text-white/90 max-w-[54ch] leading-relaxed">
-                Six production modules for school-photography operators.
-                Self-service school portal, unified student data, batch
-                exports, ID cards, dual SSO, and legacy integration.
+                A <span className="font-semibold text-white">production-ready commerce platform</span> for school-photography operators. Already built. Already peak-tested. Configure it to your operation — you don’t rebuild it from scratch.
               </p>
               <p className="mt-4 text-[14px] md:text-[15px] text-white/80 max-w-[54ch] leading-relaxed">
-                <span className="font-bold text-white">14 weeks</span>{" "}
-                from kickoff to live. Peak-season proven. Configurable to your
-                catalog, schools, and integration stack.
+                <span className="font-bold text-white">14 weeks</span> kickoff
+                to live — not 14 months. Covers student data, parent commerce,
+                school portal, batch exports, ID cards, dual SSO, and legacy
+                integration.
               </p>
 
               {/* Scroll indicator — matches Figma node 31611:43342: 14x20 pill + Inter 14px lowercase */}
@@ -415,13 +414,14 @@ function AcceleratorAtAGlance() {
             The accelerator at a glance
           </div>
           <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[60px] leading-[1.04] max-w-[26ch]">
-            A productized stack, not a{" "}
-            <span className="text-[var(--sw-blue)]">from-scratch build</span>
+            Come to us.{" "}
+            <span className="text-[var(--sw-blue)]">The platform is already built</span>
           </h2>
           <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[58ch]">
-            Six production modules that cover the end-to-end workflow — from
-            the school portal to parent commerce to legacy integration.
-            Configurable to your catalog, schools, and stack.
+            A complete operator stack — production code, proven architecture,
+            live through a national Q1 peak. You configure it against your
+            catalog, schools, and integration stack. You don’t spend 18 months
+            discovering what school photography actually needs.
           </p>
         </Reveal>
 
@@ -2908,36 +2908,30 @@ function WhatShips() {
   const deliverables = [
     {
       n: "01",
-      name: "Production deployment",
-      detail: "Six modules live on your stack. Region-pinned. IP-allowlisted where relevant.",
-      tag: "code",
-    },
-    {
-      n: "02",
       name: "Migration plan",
       detail: "Scripted cutover from your legacy systems. Dry-run tested. Zero-downtime fallback.",
       tag: "doc",
     },
     {
-      n: "03",
+      n: "02",
       name: "Architecture documentation",
       detail: "System diagram, data model, integration adapters, auth flows. Versioned with the code.",
       tag: "doc",
     },
     {
-      n: "04",
+      n: "03",
       name: "Runbooks",
       detail: "Peak-season ops, recovery procedures, known-issue registry. Written for your on-call team.",
       tag: "doc",
     },
     {
-      n: "05",
+      n: "04",
       name: "Admin training",
       detail: "Three-session handover covering portal, exports, ID cards, SSO, and audit access.",
       tag: "session",
     },
     {
-      n: "06",
+      n: "05",
       name: "30-day post-launch",
       detail: "Joint on-call with your team through the first peak window. Fix-forward, not hand-off-and-disappear.",
       tag: "support",
@@ -2963,14 +2957,14 @@ function WhatShips() {
       <div className="wrap relative">
         <div className="grid gap-10 md:gap-14 lg:grid-cols-[1fr_1.4fr] items-start">
           <Reveal>
-            <div className="label-code mb-6 text-white/55">What ships</div>
-            <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[60px] leading-[1.04] max-w-[16ch]">
-              Six modules,{" "}
-              <span className="text-[var(--sw-mint)]">plus everything around them</span>
+            <div className="label-code mb-6 text-white/55">Around the code</div>
+            <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[60px] leading-[1.04] max-w-[18ch]">
+              Not just the platform.{" "}
+              <span className="text-[var(--sw-mint)]">Everything to run it</span>
             </h2>
             <p className="mt-6 text-white/75 text-[16px] md:text-[17px] leading-relaxed max-w-[44ch]">
-              The engagement ships production code — and the artifacts your
-              team needs to run it. No black box, no vendor lock-in, no
+              The engagement hands over the artifacts your team needs to own
+              the stack after launch. No black box, no vendor lock-in, no
               post-launch silence.
             </p>
           </Reveal>
@@ -3126,16 +3120,22 @@ function CTA() {
 
             {/* Account-exec quote card */}
             <div className="mt-10 rounded-[4px] border border-white/15 bg-white/[0.04] backdrop-blur p-6 md:p-7">
-              <blockquote className="font-head text-white text-[17px] md:text-[19px] leading-[1.3]">
-                &ldquo;You pay us to{" "}
-                <span className="text-[var(--sw-mint)]">configure, not rebuild</span>. The reference implementation funded the first version. You get the proven one.&rdquo;
+              <blockquote className="font-head text-white text-[17px] md:text-[19px] leading-[1.35]">
+                &ldquo;Most operators wait 18 months for a platform rebuild. We built ours once, in production, under a national Q1 deadline. You get a{" "}
+                <span className="text-[var(--sw-mint)]">14-week configuration</span>{" "}
+                of a stack that already survived peak. That is the whole value — the learning curve is already paid for.&rdquo;
               </blockquote>
               <div className="mt-5 pt-4 border-t border-white/10 flex items-center gap-4">
-                <div className="relative h-10 w-10 rounded-full overflow-hidden bg-gradient-to-br from-[var(--sw-mint)]/40 to-[var(--sw-blue)]/60 flex items-center justify-center">
-                  <span className="font-head text-[14px] text-white font-bold">KG</span>
-                </div>
+                <img
+                  src="/team/kristaps.png"
+                  alt="Kristaps Gailitis"
+                  className="h-11 w-11 rounded-full object-cover shrink-0"
+                  style={{
+                    border: "1px solid rgba(230,231,239,0.2)",
+                  }}
+                />
                 <div>
-                  <div className="text-white text-[13px] font-medium">Kristaps Gailitis</div>
+                  <div className="text-white text-[14px] font-medium">Kristaps Gailitis</div>
                   <div className="label-code text-white/55 mt-0.5">CMO · scandiweb</div>
                 </div>
               </div>

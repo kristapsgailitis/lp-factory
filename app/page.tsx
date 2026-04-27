@@ -193,19 +193,16 @@ function HeroBg() {
   );
 }
 
-/* Glass quote card · real client voice · picks up ambient light */
+/* Glass card · reference customer proof · numbers + voice */
 function HeroSpecCard() {
-  const modules = [
-    "Self-service school portal",
-    "Unified student data model",
-    "Automated batch exports",
-    "ID card & admin services",
-    "Dual SSO + audit",
-    "Legacy integration layer",
+  const stats: [string, string][] = [
+    ["44,891", "students live · day one"],
+    ["14 wk", "kickoff to production"],
+    ["0", "peak-season incidents"],
   ];
   return (
     <a
-      href="#at-a-glance"
+      href="#reference"
       className="group relative block overflow-hidden rounded-[4px] backdrop-blur"
       style={{
         background:
@@ -214,57 +211,43 @@ function HeroSpecCard() {
           "inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(255,255,255,0.06), 0 0 0 1px rgba(255,255,255,0.12)",
       }}
     >
-      <div className="p-6 md:p-7">
-        <div className="flex items-center justify-between label-code text-white/70 mb-6">
-          <span>Accelerator · v1 · production</span>
-          <span className="h-1.5 w-1.5 rounded-full bg-[var(--sw-mint)] pulse-green" />
-        </div>
+      <div className="p-6 md:p-8">
+        <blockquote className="font-head text-white text-[22px] md:text-[26px] leading-[1.2] tracking-[-0.005em]">
+          We had{" "}
+          <span className="text-[var(--sw-mint)]">
+            40 people doing what should take 25
+          </span>
+          . Burning cash from all of these client service officers.
+        </blockquote>
 
-        {/* Lead · module count */}
-        <div className="flex items-baseline gap-3 mb-5">
-          <div className="font-head text-white text-[44px] md:text-[52px] leading-none tabular-nums">
-            6
-          </div>
-          <div className="label-code text-white/65">production modules</div>
-        </div>
+        <figcaption className="mt-5 flex items-center gap-3 text-[13px] text-white/75">
+          <span className="h-px w-6 bg-white/30" />
+          <span>
+            <span className="text-white">David van Gelder</span>
+            <span className="text-white/55"> · Operations · Advanced Life</span>
+          </span>
+        </figcaption>
 
-        {/* Module list */}
-        <ul className="pt-4 border-t border-white/10 space-y-2.5">
-          {modules.map((m, i) => (
-            <li
-              key={m}
-              className="flex items-center gap-3 text-[13px] md:text-[14px] text-white/85"
-            >
-              <span className="label-code text-white/40 tabular-nums w-[18px] shrink-0">
-                0{i + 1}
-              </span>
-              <span>{m}</span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Bottom spec strip — product, not case */}
-        <div className="mt-5 pt-4 border-t border-white/10 grid grid-cols-3 gap-2">
-          {[
-            ["14 wk", "to live"],
-            ["Peak", "tested"],
-            ["5+", "integrations"],
-          ].map(([k, l]) => (
+        <div className="mt-7 pt-6 border-t border-white/10 grid grid-cols-3 gap-2">
+          {stats.map(([k, l]) => (
             <div
               key={k}
               className="rounded-[2px] border border-white/10 bg-white/[0.03] px-3 py-3"
             >
-              <div className="font-head text-white text-[17px] md:text-[19px] leading-none tabular-nums">
+              <div className="font-head text-white text-[20px] md:text-[22px] leading-none tabular-nums">
                 {k}
               </div>
-              <div className="label-code mt-2 text-[9px] text-white/55">{l}</div>
+              <div className="label-code mt-2 text-[9px] text-white/55 leading-snug">
+                {l}
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Explore */}
         <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
-          <span className="label-code text-white/65">What ships</span>
+          <span className="text-[12px] text-white/70">
+            Read the Advanced Life case study
+          </span>
           <ArrowUpRight className="h-5 w-5 shrink-0 text-white/70 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition" />
         </div>
       </div>
@@ -386,23 +369,21 @@ function Hero() {
 
 function AcceleratorAtAGlance() {
   const modules = [
-    { n: "01", name: "Self-service school portal", stack: "Magento 2 · Hyvä" },
-    { n: "02", name: "Unified student data model", stack: "Pimcore MDM" },
-    { n: "03", name: "Automated batch exports", stack: "CRON · 10 formats" },
-    { n: "04", name: "ID card & admin services", stack: "in-platform builder" },
-    { n: "05", name: "Dual SSO + audit", stack: "Cognito · Entra · Google" },
-    { n: "06", name: "Legacy integration layer", stack: ".NET middleware" },
+    { n: "1", name: "Self-service school portal" },
+    { n: "2", name: "Unified student data model" },
+    { n: "3", name: "Automated batch exports" },
+    { n: "4", name: "ID card & admin services" },
+    { n: "5", name: "Dual SSO + audit" },
+    { n: "6", name: "Legacy integration layer" },
   ];
 
   const spec: [string, string][] = [
-    ["Deployment", "14 weeks · kickoff to live"],
-    ["Team shape", "5–8 person pod · senior-led"],
-    ["Platform baseline", "Magento 2 + Hyvä + Pimcore"],
-    ["Integration adapters", "REST · GraphQL · SOAP · webhooks · Kafka · SFTP · EDI"],
-    ["Auth", "SAML · OIDC · SAML federation · IP allowlist"],
-    ["Peak readiness", "Battle-tested through a full peak season"],
+    ["Live in", "14 weeks · kickoff to production"],
+    ["Connects to", "REST · GraphQL · SOAP · webhooks · Kafka · SFTP · EDI"],
+    ["Sign-in", "SAML · OIDC · SAML federation · IP allowlist"],
+    ["Peak season", "Battle-tested through a full peak"],
     ["Data residency", "Region-pinned per deployment"],
-    ["Handover", "Runbooks · architecture docs · admin training"],
+    ["You keep", "Runbooks · architecture docs · admin training"],
   ];
 
   return (
@@ -413,15 +394,12 @@ function AcceleratorAtAGlance() {
       <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/10" />
       <div className="wrap relative">
         <Reveal>
-          <div className="label-code mb-6 text-[var(--sw-black)]/55">
-            The accelerator at a glance
-          </div>
           <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[60px] leading-[1.04] max-w-[26ch]">
             Come to us.{" "}
             <span className="text-[var(--sw-blue)]">The platform is already built</span>
           </h2>
           <p className="mt-6 text-[15px] md:text-[17px] text-[var(--sw-black)]/70 leading-relaxed max-w-[58ch]">
-            A complete commerce stack — production code, proven architecture,
+            A complete commerce platform — production code, proven architecture,
             battle-tested at peak. You configure it against your catalog,
             schools, and integration stack. You don’t spend 18 months
             discovering what school photography actually needs.
@@ -429,19 +407,19 @@ function AcceleratorAtAGlance() {
         </Reveal>
 
         <div className="mt-14 md:mt-20 grid gap-10 lg:gap-14 lg:grid-cols-[1.1fr_1fr] items-start">
-          {/* Left — modules architecture stack */}
+          {/* Left — modules list */}
           <Reveal>
             <div className="relative bracket-frame p-5 md:p-7">
               <span className="bracket-bl" />
               <span className="bracket-br" />
-              <div className="label-code mb-6 text-[var(--sw-black)]/55">
-                FIG.01 · Module architecture
-              </div>
+              <h3 className="font-head text-[var(--sw-black)] text-[18px] md:text-[20px] leading-tight mb-6">
+                Six modules that ship together
+              </h3>
 
               <ul className="space-y-0">
                 {modules.map((m, i) => (
                   <li key={m.n} className="group relative">
-                    <div className="grid grid-cols-[40px_1fr_auto] items-center gap-4 py-4 md:py-5 border-b border-[var(--sw-black)]/10 last:border-b-0">
+                    <div className="grid grid-cols-[40px_1fr] items-center gap-4 py-4 md:py-5 border-b border-[var(--sw-black)]/10 last:border-b-0">
                       {/* module number */}
                       <div className="label-code text-[var(--sw-blue)] tabular-nums">
                         {m.n}
@@ -449,10 +427,6 @@ function AcceleratorAtAGlance() {
                       {/* name */}
                       <div className="font-head text-[var(--sw-black)] text-[16px] md:text-[18px] leading-tight">
                         {m.name}
-                      </div>
-                      {/* stack chip */}
-                      <div className="label-code text-[var(--sw-black)]/55 text-right">
-                        {m.stack}
                       </div>
                     </div>
                     {/* connector tick · visual "stack" effect */}
@@ -493,13 +467,9 @@ function AcceleratorAtAGlance() {
                 style={{ background: "var(--sw-mint)" }}
               />
 
-              <div className="flex items-center justify-between mb-7">
-                <span className="label-code text-white/55">Spec sheet</span>
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[var(--sw-mint)] pulse-green" />
-                  <span className="label-code text-white/55">Live</span>
-                </div>
-              </div>
+              <h3 className="font-head text-white text-[18px] md:text-[20px] leading-tight mb-7">
+                What you get on day one
+              </h3>
 
               <dl className="space-y-0">
                 {spec.map(([k, v], i) => (
@@ -525,8 +495,8 @@ function AcceleratorAtAGlance() {
         {/* mid-page CTA */}
         <Reveal>
           <div className="mt-16 md:mt-20 pt-10 border-t border-[var(--sw-black)]/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <p className="font-head text-[var(--sw-black)] text-[20px] md:text-[24px] leading-[1.25] max-w-[40ch]">
-              Stop building. Start configuring.
+            <p className="font-head text-[var(--sw-black)] text-[20px] md:text-[24px] leading-[1.25] max-w-[44ch]">
+              Live in 14 weeks. Configured to your business, not built from scratch.
             </p>
             <a href="#cta" className={btnLight}>
               Start the accelerator
@@ -540,26 +510,26 @@ function AcceleratorAtAGlance() {
 }
 
 /* ==================================================================
-   SECTION · Three fires in school photography commerce
+   SECTION · Three problems in school photography commerce
    Dark · industry-framed problem cards
    ================================================================== */
 
-function ProblemFires() {
-  const fires = [
+function Problems() {
+  const problems = [
     {
-      n: "01",
+      n: "1",
       title: "A legacy stack nobody wants to touch",
       body:
         "Five or more systems, no unified data model. An ageing platform, an image DB, a CRM, a fulfilment tool. Downtime risk compounds every year.",
     },
     {
-      n: "02",
+      n: "2",
       title: "Student data scattered",
       body:
         "Names as single text strings. SIC codes tied to images, not students. Sibling relationships and school transfers nowhere in the schema.",
     },
     {
-      n: "03",
+      n: "3",
       title: "Hard seasonal peak",
       body:
         "Photography season collides with yearbooks, ID cards, and parent orders. A manual stack breaks at peak. Support queue explodes.",
@@ -567,7 +537,7 @@ function ProblemFires() {
   ];
 
   return (
-    <section id="fires" className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden">
+    <section id="problems" className="relative bg-[var(--sw-black)] py-28 md:py-36 overflow-hidden">
       {/* top accent line draws in on scroll */}
       <svg
         className="absolute top-0 inset-x-0 h-px opacity-40"
@@ -580,9 +550,8 @@ function ProblemFires() {
       <div className="wrap relative">
         <div className="max-w-[64ch] mb-14 md:mb-20">
           <Reveal>
-            <div className="label-code mb-6 text-white/55">The fires this solves</div>
             <h2 className="font-head text-white text-[34px] md:text-[48px] lg:text-[56px] leading-[1.05]">
-              Three fires common to{" "}
+              Three problems common to{" "}
               <span className="text-[var(--sw-mint)]">school photography commerce</span>
             </h2>
             <p className="mt-6 text-[16px] md:text-[17px] text-white/75 max-w-[56ch] leading-relaxed">
@@ -593,12 +562,12 @@ function ProblemFires() {
           </Reveal>
         </div>
 
-        {/* 3 fire cards */}
+        {/* 3 problem cards */}
         <div className="grid gap-5 md:grid-cols-3 mb-16 md:mb-24">
-          {fires.map((f, i) => (
+          {problems.map((f, i) => (
             <Reveal key={f.n} delay={i * 0.08}>
               <div className="relative rounded-[4px] border border-white/10 bg-white/[0.02] p-6 md:p-7 h-full">
-                <div className="label-code text-white/55 mb-5">Fire · {f.n}</div>
+                <div className="label-code text-white/55 mb-5">Problem · {f.n}</div>
                 <h3 className="font-head text-white text-[20px] md:text-[22px] leading-[1.15] mb-3">
                   {f.title}
                 </h3>
@@ -641,19 +610,19 @@ function ProblemFires() {
 function Differentiator() {
   const decisions = [
     {
-      n: "01",
+      n: "1",
       title: "Multi-child account",
       body:
         "One parent manages many students across many schools. Each student has their own grade, school, and personalisation. The student switcher drives cart, catalog, and context.",
     },
     {
-      n: "02",
+      n: "2",
       title: "School-gated catalog",
       body:
         "Products scoped to schools, campuses, and grades. Parents only see what the selected student is authorised for. Guests see limited views with prices hidden.",
     },
     {
-      n: "03",
+      n: "3",
       title: "Operational integration layer",
       body:
         "Real-time bidirectional sync with the ERP. Fallback cron jobs, retry logic, and audit logs built in from day one.",
@@ -670,9 +639,6 @@ function Differentiator() {
 
       <div className="wrap relative">
         <Reveal>
-          <div className="label-code mb-6 text-[var(--sw-black)]/55">
-            What makes it different
-          </div>
           <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[48px] lg:text-[60px] leading-[1.04] max-w-[24ch]">
             The{" "}
             <span className="text-[var(--sw-blue)]">parent, student, and school</span>{" "}
@@ -720,15 +686,6 @@ function Differentiator() {
           <Reveal delay={0.15}>
             <div className="relative">
               <SvgEntitySchema />
-              <div className="mt-6 flex items-center gap-4">
-                <span className="label-code text-[var(--sw-black)]/55">
-                  FIG.02 · Data model
-                </span>
-                <span className="h-px flex-1 bg-[var(--sw-black)]/10" />
-                <span className="label-code text-[var(--sw-black)]/45">
-                  3 tables · 2 joins
-                </span>
-              </div>
             </div>
           </Reveal>
         </div>
@@ -2185,7 +2142,7 @@ function SvgIntegration() {
       <text x={430} y={30} fill="#6EF76E" fontSize="10" fontFamily="JetBrains Mono" letterSpacing="2">
         NEW · PRODUCTION
       </text>
-      {["Pimcore MDM", "Hyvä Commerce", "Portal", "Batch Engine", "ID Builder"].map((n, i) => {
+      {["Data model", "Commerce", "Portal", "Batch Engine", "ID Builder"].map((n, i) => {
         const y = 56 + i * 44;
         return (
           <motion.g
@@ -2331,7 +2288,7 @@ function OutcomeBlockRow({ n, kicker, title, lede, results, diagram, theme, reve
 function Outcomes() {
   const items: OutcomeBlock[] = [
     {
-      n: "01",
+      n: "1",
       kicker: "Self-service school portal",
       title: (
         <>
@@ -2349,7 +2306,7 @@ function Outcomes() {
       theme: "dark",
     },
     {
-      n: "02",
+      n: "2",
       kicker: "Batch export engine",
       title: (
         <>
@@ -2369,8 +2326,8 @@ function Outcomes() {
       diagramDark: true,
     },
     {
-      n: "03",
-      kicker: "Student data model · Pimcore MDM",
+      n: "3",
+      kicker: "Student data model",
       title: (
         <>
           Five systems collapse into <span className="text-[var(--sw-mint)]">one clean graph</span>
@@ -2387,7 +2344,7 @@ function Outcomes() {
       theme: "dark",
     },
     {
-      n: "04",
+      n: "4",
       kicker: "ID card & admin services",
       title: (
         <>
@@ -2407,7 +2364,7 @@ function Outcomes() {
       diagramDark: true,
     },
     {
-      n: "05",
+      n: "5",
       kicker: "Dual SSO + audit",
       title: (
         <>
@@ -2425,7 +2382,7 @@ function Outcomes() {
       theme: "dark",
     },
     {
-      n: "06",
+      n: "6",
       kicker: "Legacy integration layer",
       title: (
         <>
@@ -2459,7 +2416,6 @@ function Outcomes() {
         <div className="wrap relative">
           <div className="grid gap-10 md:gap-14 lg:grid-cols-[1.1fr_0.9fr] items-end">
             <Reveal>
-              <div className="label-code mb-6 text-white/55">Outcomes · six</div>
               <h2 className="font-head text-white text-[40px] md:text-[68px] lg:text-[88px] leading-[0.98] tracking-[-0.015em] max-w-[14ch]">
                 Six operational problems.{" "}
                 <span className="text-white/35">Gone</span>
@@ -2518,8 +2474,7 @@ function Outcomes() {
       <section className="relative bg-lp-bright overflow-hidden">
         <div className="wrap py-16 md:py-20 border-t border-[var(--sw-black)]/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <p className="font-head text-[var(--sw-black)] text-[20px] md:text-[24px] leading-[1.25] max-w-[44ch]">
-            Six modules, all live in production. Configure them to your
-            business — start the diagnostic.
+            Cut a year off your roadmap. Start with the workflow costing you the most.
           </p>
           <a href="#cta" className={btnLight}>
             Start the accelerator
@@ -2546,7 +2501,6 @@ function AcceleratorValue() {
       <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/15" />
       <div className="wrap relative">
         <Reveal>
-          <div className="label-code mb-6 text-[var(--sw-black)]/55">Accelerator vs building from scratch</div>
           <h2 className="font-head text-[var(--sw-black)] text-[34px] md:text-[52px] lg:text-[64px] leading-[1.05] max-w-[18ch]">
             You don’t pay us to learn{" "}
             <span className="text-[var(--sw-blue)]">school photography</span>
@@ -2632,8 +2586,8 @@ function AcceleratorValue() {
         {/* mid-page CTA */}
         <Reveal>
           <div className="mt-16 md:mt-20 pt-10 border-t border-[var(--sw-black)]/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <p className="font-head text-[var(--sw-black)] text-[20px] md:text-[24px] leading-[1.25] max-w-[40ch]">
-              14 weeks vs 18 months. The math is the pitch.
+            <p className="font-head text-[var(--sw-black)] text-[20px] md:text-[24px] leading-[1.25] max-w-[44ch]">
+              Six modules in production from day one — saving you a year of build time.
             </p>
             <a href="#cta" className={btnLight}>
               Start the accelerator
@@ -2659,7 +2613,6 @@ function AcceleratorValue() {
 function Testimonials() {
   const quotes = [
     {
-      tag: "PRE-LAUNCH · DEMO REVIEW",
       short: "It looks great. Really slick.",
       long: "It looks great. It’s really slick. Can’t wait to get it in.",
       who: "Jon Mann",
@@ -2667,7 +2620,6 @@ function Testimonials() {
       accent: "mint",
     },
     {
-      tag: "GO-LIVE · OPERATIONS DEF OF DONE",
       short: "Money coming in. No phone calls. Smooth sailing.",
       long: "Money coming in. No phone calls from anybody. No upset customers. Smooth sailing.",
       who: "David van Gelder",
@@ -2685,14 +2637,13 @@ function Testimonials() {
       <div className="wrap">
         <div className="max-w-[60ch] mb-14 md:mb-20">
           <Reveal>
-            <div className="label-code mb-6 text-white/55">Quoted from the reference launch</div>
             <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[60px] leading-[1.05] max-w-[22ch]">
               The client,{" "}
               <span className="text-white/45">in their own words</span>
             </h2>
             <p className="mt-6 text-white/75 text-[16px] md:text-[17px] leading-relaxed">
-              Two voices from the reference launch — demo review and go-live
-              day. Pulled from weekly syncs over the engagement.
+              Two voices from the reference launch, pulled from weekly syncs
+              over the engagement.
             </p>
           </Reveal>
         </div>
@@ -2710,16 +2661,6 @@ function Testimonials() {
                     opacity: 0.6,
                   }}
                 />
-                <div className="label-code flex items-center gap-2 text-white/55 pl-3">
-                  <span
-                    className="h-1.5 w-1.5 rounded-full"
-                    style={{
-                      background:
-                        q.accent === "mint" ? "var(--sw-mint)" : "var(--sw-blue)",
-                    }}
-                  />
-                  {q.tag}
-                </div>
                 <blockquote className="font-head text-white text-[20px] md:text-[22px] leading-[1.22] pl-3">
                   &ldquo;{q.short}&rdquo;
                 </blockquote>
@@ -2740,7 +2681,7 @@ function Testimonials() {
 
 /* ==================================================================
    SECTION · Reference case study · NAMED Advanced Life
-   Blue gradient · 3 fires we came with + 4 strong stats
+   Blue gradient · 3 problems we came with + 4 strong stats
    ================================================================== */
 
 function ReferenceCase() {
@@ -2757,7 +2698,6 @@ function ReferenceCase() {
     >
       <div className="wrap relative">
         <Reveal>
-          <div className="label-code mb-6 text-white/55">Reference implementation</div>
           <div className="grid md:grid-cols-[1fr_2fr] gap-8 md:gap-16 items-end">
             <h2 className="font-head text-white text-[36px] md:text-[52px] lg:text-[64px] leading-[1.04] max-w-[14ch]">
               <span className="text-[var(--sw-mint)]">Advanced Life.</span>{" "}
@@ -2769,21 +2709,21 @@ function ReferenceCase() {
           </div>
         </Reveal>
 
-        {/* 3 fires */}
+        {/* 3 problems */}
         <div className="mt-16 md:mt-24 grid md:grid-cols-3 gap-5 md:gap-6">
           {[
             {
-              n: "Fire · 01",
+              n: "Problem · 1",
               title: "Five legacy systems. No unified data",
               body: "GlobalJade, ImageDatabase, The Hub, CRM, eWay. Downtime risk compounding every year.",
             },
             {
-              n: "Fire · 02",
+              n: "Problem · 2",
               title: "500 GB of portraits on a physical server",
               body: "On-prem file storage. Backups by hand. One hard drive away from a national incident.",
             },
             {
-              n: "Fire · 03",
+              n: "Problem · 3",
               title: "Legacy database, five years untouched",
               body: "Student names as single text strings. SIC codes tied to images. Structural debt blocking every change.",
             },
@@ -2824,7 +2764,7 @@ function ReferenceCase() {
         {/* closing note */}
         <Reveal delay={0.3}>
           <p className="mt-14 md:mt-16 max-w-[70ch] text-white/75 text-[14px] md:text-[15px] leading-relaxed">
-            These modules sit on top of the full Magento 2 + Hyv&auml; + Pimcore baseline. Not instead of it. You keep everything commerce already does well. You get the parts that school photography needs to operate.
+            These modules sit on top of your existing commerce platform. Not instead of it. You keep everything commerce already does well. You get the parts that school photography needs to operate.
           </p>
         </Reveal>
       </div>
@@ -2839,21 +2779,21 @@ function ReferenceCase() {
 function HowWeWork() {
   const steps = [
     {
-      n: "01",
+      n: "1",
       length: "2–4 weeks",
       title: "Diagnostic sprint",
       body:
         "We map your data, systems, exports, roles. Identify the single highest-cost workflow. You get a phased plan, including where the accelerator does not apply.",
     },
     {
-      n: "02",
+      n: "2",
       length: "6–12 weeks",
       title: "Pilot module",
       body:
         "One contained module live in production — portal, batch engine, or ID cards. No big-bang risk. Measurable result by the end of the pilot.",
     },
     {
-      n: "03",
+      n: "3",
       length: "Phased",
       title: "Scaled rollout",
       body:
@@ -2865,7 +2805,6 @@ function HowWeWork() {
       <div className="absolute top-0 inset-x-0 h-px bg-[var(--sw-black)]/10" />
       <div className="wrap relative">
         <Reveal>
-          <div className="label-code mb-6 text-[var(--sw-black)]/55">How an engagement runs</div>
           <h2 className="font-head text-[34px] md:text-[52px] lg:text-[64px] leading-[1.05] max-w-[22ch] text-[var(--sw-black)]">
             Start with the one workflow{" "}
             <span className="text-[var(--sw-blue)]">that costs you the most</span>
@@ -2950,31 +2889,31 @@ function HowWeWork() {
 function WhatShips() {
   const deliverables = [
     {
-      n: "01",
+      n: "1",
       name: "Migration plan",
       detail: "Scripted cutover from your legacy systems. Dry-run tested. Zero-downtime fallback.",
       tag: "doc",
     },
     {
-      n: "02",
+      n: "2",
       name: "Architecture documentation",
       detail: "System diagram, data model, integration adapters, auth flows. Versioned with the code.",
       tag: "doc",
     },
     {
-      n: "03",
+      n: "3",
       name: "Runbooks",
       detail: "Peak-season ops, recovery procedures, known-issue registry. Written for your on-call team.",
       tag: "doc",
     },
     {
-      n: "04",
+      n: "4",
       name: "Admin training",
       detail: "Three-session handover covering portal, exports, ID cards, SSO, and audit access.",
       tag: "session",
     },
     {
-      n: "05",
+      n: "5",
       name: "30-day post-launch",
       detail: "Joint on-call with your team through the first peak window. Fix-forward, not hand-off-and-disappear.",
       tag: "support",
@@ -3000,7 +2939,6 @@ function WhatShips() {
       <div className="wrap relative">
         <div className="grid gap-10 md:gap-14 lg:grid-cols-[1fr_1.4fr] items-start">
           <Reveal>
-            <div className="label-code mb-6 text-white/55">Around the code</div>
             <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[60px] leading-[1.04] max-w-[18ch]">
               Not just the platform.{" "}
               <span className="text-[var(--sw-mint)]">Everything to run it</span>
@@ -3130,7 +3068,6 @@ function FAQ() {
       <div className="wrap">
         <div className="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-20">
           <Reveal>
-            <div className="label-code mb-6 text-white/55">FAQ</div>
             <h2 className="font-head text-white text-[34px] md:text-[44px] lg:text-[56px] leading-[1.05] max-w-[14ch]">
               The questions that actually <span className="text-[var(--sw-mint)]">come up</span>
             </h2>
@@ -3165,13 +3102,12 @@ function CTA() {
       <div className="wrap relative">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
           <Reveal>
-            <div className="label-code mb-6 text-white/55">Configure, don&apos;t rebuild</div>
             <h2 className="font-head text-white text-[34px] md:text-[52px] lg:text-[64px] leading-[1.05] max-w-[18ch]">
-              Tell us about your operation.{" "}
-              <span className="text-[var(--sw-mint)]">We will be direct.</span>
+              See if the accelerator{" "}
+              <span className="text-[var(--sw-mint)]">fits your business</span>
             </h2>
             <p className="mt-6 text-white/80 max-w-[52ch] text-[16px] md:text-[17px] leading-relaxed">
-              Thirty minutes is enough to map your stack, identify your highest-friction workflow, and tell you honestly whether the accelerator fits. If it does not, we will say so.
+              Thirty minutes. We map your stack, find your highest-friction workflow, and tell you whether the accelerator fits. If it does not, we will say so.
             </p>
 
             {/* Account-exec quote card */}
@@ -3297,7 +3233,7 @@ export default function Page() {
     <>
       <Hero />
       <AcceleratorAtAGlance />
-      <ProblemFires />
+      <Problems />
       <Differentiator />
       <Outcomes />
       <ReferenceCase />

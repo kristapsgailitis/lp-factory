@@ -1,7 +1,17 @@
 "use client";
 
 /**
- * ScandiwebFooter – 1:1 replica of scandiweb.com footer.
+ * @temporary — hand-maintained 1:1 replica of the scandiweb.com footer.
+ *
+ * Replace this and `scandiweb-header.tsx` with DevLink-imported components once
+ * Webflow Support resolves the DevLink ticket on the account. Swap is two lines
+ * per route — see the header file for the migration snippet.
+ *
+ * Then delete this file. Migration plan tracked in
+ * https://github.com/kristapsgailitis/lp-factory/pull/1.
+ *
+ * Until DevLink lands, this file is the bridge — it keeps the LPs looking like
+ * scandiweb.com pages during the transition window.
  *
  * Audit source: scandiweb.com homepage CSS + DOM (cdn.prod.website-files.com/.../scandiweb.shared.*.min.css).
  * Spec:

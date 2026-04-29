@@ -1,12 +1,24 @@
 "use client";
 
 /**
- * ScandiwebHeader – top bar (mirrors scandiweb.com bar) + drawer (LP-styled).
+ * @temporary — hand-maintained mirror of the scandiweb.com top bar + drawer.
  *
- * The drawer matches the LP's own visual language (dark navy, Golos Text, mint accent,
- * beige outline CTA) instead of mirroring scandiweb.com's white drawer. Decision:
- * brand consistency with the body of the LP beats 1:1 fidelity to the parent site for
- * the menu surface. Footer stays 1:1 with scandiweb.com.
+ * Replace this and `scandiweb-footer.tsx` with DevLink-imported components once
+ * Webflow Support resolves the DevLink ticket on the account. Swap is two lines
+ * per route:
+ *
+ *   - import { ScandiwebHeader } from "@/components/scandiweb-header";
+ *   - import { ScandiwebFooter } from "@/components/scandiweb-footer";
+ *   + import { Navbar, Footer } from "@/devlink";
+ *
+ * Then delete this file and `scandiweb-footer.tsx`. Migration plan tracked in
+ * https://github.com/kristapsgailitis/lp-factory/pull/1.
+ *
+ * Until DevLink lands, this file is the bridge — it keeps the LPs looking like
+ * scandiweb.com pages during the transition window.
+ *
+ * Top bar: 1:1 with scandiweb.com. Drawer: LP-styled (dark navy, Golos Text,
+ * mint accent, beige outline CTA) for visual cohesion with the LP body.
  */
 
 import { useEffect, useState } from "react";

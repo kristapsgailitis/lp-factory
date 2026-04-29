@@ -1,0 +1,25 @@
+# CODEOWNERS · GitHub uses this to auto-request reviews on PRs.
+# Pattern: <path>  <owner(s)>
+# Owners can be GitHub usernames (@user) or teams (@org/team).
+
+# Default catch-all
+*                                            @kristapsgailitis
+
+# Architecture, build config, CI · dev-owned
+/apps/lp-factory/next.config.ts              @kristapsgailitis
+/apps/lp-factory/tsconfig.json               @kristapsgailitis
+/apps/lp-factory/postcss.config.mjs          @kristapsgailitis
+/apps/lp-factory/eslint.config.mjs           @kristapsgailitis
+/apps/lp-factory/package.json                @kristapsgailitis
+/apps/lp-factory/vercel.json                 @kristapsgailitis
+/.github/                                    @kristapsgailitis
+/package.json                                @kristapsgailitis
+/package-lock.json                           @kristapsgailitis
+
+# Shared chrome (header / footer / form) · review carefully, used by every page
+/apps/lp-factory/components/scandiweb-header.tsx   @kristapsgailitis
+/apps/lp-factory/components/scandiweb-footer.tsx   @kristapsgailitis
+/apps/lp-factory/components/hubspot-form.tsx       @kristapsgailitis
+
+# Page content (copy edits, new LPs) · marketing-owned, fast lane
+/apps/lp-factory/app/                        @kristapsgailitis

@@ -1,52 +1,49 @@
 import Link from "next/link";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "scandiweb commerce accelerators",
-  description:
-    "Productized commerce platforms for vertical retailers — configured to your stack, live in weeks.",
-  robots: { index: false, follow: false },
-};
-
-const CATEGORIES: { slug: string; title: string; tagline: string; count: string }[] = [
+const ACCELERATORS: { slug: string; title: string; tagline: string }[] = [
   {
-    slug: "accelerators",
-    title: "Accelerators",
+    slug: "school-photography-commerce",
+    title: "School photography commerce",
     tagline:
-      "Productized commerce platforms for vertical retailers. Configured to your stack, live in weeks.",
-    count: "2 verticals",
+      "Five legacy systems collapsed into one. Peak support load down 95% in four weeks.",
+  },
+  {
+    slug: "school-uniform-commerce",
+    title: "School uniform commerce",
+    tagline:
+      "200 schools live the same morning. ERP-to-storefront sync in real time.",
   },
 ];
 
-export default function IndexPage() {
+export default function AcceleratorsIndex() {
   return (
     <main className="min-h-screen bg-[var(--sw-black)] text-white px-6 md:px-12 py-20 md:py-32">
       <div className="max-w-3xl mx-auto">
-        <span className="label-code text-white/55">scandiweb · pages</span>
+        <span className="label-code text-white/55">scandiweb · accelerators</span>
         <h1 className="font-head text-white text-[40px] md:text-[64px] leading-[1.05] mt-4 mb-6">
-          scandiweb pages
+          Commerce accelerators
         </h1>
         <p className="text-white/70 text-[16px] md:text-[18px] leading-relaxed max-w-[60ch] mb-14">
-          Custom pages on scandiweb.com – grouped by category. Each category is
-          a folder under <code className="text-[var(--sw-mint)]">app/</code>.
+          Productized commerce platforms for vertical retailers – configured to
+          your stack, live in weeks. Pick a vertical to see the build.
         </p>
         <ul className="flex flex-col gap-4">
-          {CATEGORIES.map((c) => (
-            <li key={c.slug}>
+          {ACCELERATORS.map((lp) => (
+            <li key={lp.slug}>
               <Link
-                href={`/${c.slug}`}
+                href={`/accelerators/${lp.slug}`}
                 className="group block rounded-[3px] border border-white/10 bg-white/[0.02] hover:border-white/30 hover:bg-white/[0.05] transition-colors p-6"
               >
                 <div className="flex items-baseline justify-between gap-4 mb-2">
                   <span className="font-head text-white text-[22px] md:text-[26px] leading-tight group-hover:text-[var(--sw-mint)] transition-colors">
-                    {c.title}
+                    {lp.title}
                   </span>
                   <span className="label-code text-white/45 group-hover:text-[var(--sw-mint)] transition-colors">
-                    /{c.slug} · {c.count}
+                    /accelerators/{lp.slug}
                   </span>
                 </div>
                 <p className="text-[14px] md:text-[15px] text-white/60 leading-relaxed">
-                  {c.tagline}
+                  {lp.tagline}
                 </p>
               </Link>
             </li>

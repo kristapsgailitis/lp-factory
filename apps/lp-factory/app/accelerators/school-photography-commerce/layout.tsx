@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const URL_PATH = "/school-photography-commerce";
+const URL_PATH = "/accelerators/school-photography-commerce";
 
 export const metadata: Metadata = {
   title: "School photography commerce | scandiweb",

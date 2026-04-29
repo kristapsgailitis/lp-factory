@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Golos_Text, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -25,8 +26,12 @@ const jetbrains = JetBrains_Mono({
 
 const SITE = "https://scandiweb.com";
 
-// Default site metadata. Each LP route overrides title/description/og via its own
-// `export const metadata` in its page.tsx.
+// Same GTM container as scandiweb.com. All tracking (GA4, HubSpot, conversion
+// pixels, future tags) is managed in the GTM dashboard, not in this code.
+const GTM_ID = "GTM-TCLKQ96";
+
+// Default site metadata. Each LP route overrides title/description/og via its
+// own `export const metadata` in its layout.tsx.
 export const metadata: Metadata = {
   title: "scandiweb",
   description:
@@ -46,7 +51,24 @@ export default function RootLayout({
       lang="en"
       className={`${golos.variable} ${inter.variable} ${jetbrains.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <head>
+        <Script
+          id="gtm"
+          strategy="afterInteractive"
+        >{`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`}</Script>
+      </head>
+      <body className="min-h-full flex flex-col">
+        {/* GTM noscript fallback for browsers without JS */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }

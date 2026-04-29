@@ -23,26 +23,17 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-const SITE = "https://school-uniform-commerce.vercel.app";
+const SITE = "https://scandiweb.com";
 
+// Default site metadata. Each LP route overrides title/description/og via its own
+// `export const metadata` in its page.tsx.
 export const metadata: Metadata = {
-  title: "School Uniform Commerce | scandiweb",
+  title: "scandiweb",
   description:
-    "A pre-built commerce platform for school uniform retailers. Parent-child-school accounts, school-gated catalogs, ERP integration, fitting appointments, returns with coupon refunds, and term-aware delivery. Proven live on Canada's leading school uniform provider.",
+    "Productized commerce accelerators for vertical retailers. Configure to your stack, live in weeks.",
   metadataBase: new URL(SITE),
-  openGraph: {
-    title: "School Uniform Commerce | scandiweb",
-    description:
-      "A pre-built commerce platform for school uniform retailers. Proven live on Canada's leading school uniform provider.",
-    type: "website",
-    siteName: "scandiweb",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "School Uniform Commerce | scandiweb",
-    description:
-      "A pre-built commerce platform for school uniform retailers. Proven live on Canada's leading school uniform provider.",
-  },
+  openGraph: { siteName: "scandiweb", type: "website" },
+  twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
   authors: [{ name: "scandiweb" }],
 };
